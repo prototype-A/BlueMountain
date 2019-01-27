@@ -1,0 +1,7 @@
+login
+RealUser
+create
+Buy-StandUser
+buy-standard
+500.00
+logout
