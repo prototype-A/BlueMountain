@@ -1,0 +1,8 @@
+addcredit
+buy
+create
+delete
+login
+logout
+refund
+sell

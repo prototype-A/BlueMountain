@@ -1,5 +1,0 @@
-login
-RealUser
-create
-RealUser
-logout

@@ -1,5 +1,0 @@
-Please Enter a Username:
-Login successful
-Please Enter a new Username:
-Error invalid username
-Logout successful
