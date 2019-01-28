@@ -1,0 +1,5 @@
+login
+RealUser
+delete
+TestDelUser
+logout

@@ -1,0 +1,3 @@
+Please Enter a Username:
+Login successful
+Error already logged in

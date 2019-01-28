@@ -1,0 +1,6 @@
+login
+RealUser
+create
+Sell-StandUser
+sell-standard
+-25.00
