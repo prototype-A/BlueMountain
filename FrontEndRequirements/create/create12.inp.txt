@@ -4,3 +4,4 @@ create
 Sell-StandUser
 sell-standard
 -25.00
+logout

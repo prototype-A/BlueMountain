@@ -3,3 +3,4 @@ Login successful
 Please Enter a new Username:
 Please Enter a TYPE:
 Error TYPE does not exist
+Logout successful

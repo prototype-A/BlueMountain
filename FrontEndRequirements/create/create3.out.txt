@@ -1,4 +1,6 @@
 Please Enter a Username:
 Login successful
 Please Enter a new Username:
-Error username already exists
+Please Enter a user TYPE:
+Error invalid username
+Logout successful

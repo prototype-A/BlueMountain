@@ -3,3 +3,4 @@ RealUser
 create
 fake-typeuser
 fake-type
+logout

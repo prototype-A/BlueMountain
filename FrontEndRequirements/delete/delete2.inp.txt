@@ -2,3 +2,4 @@ login
 RealUser
 delete
 RealUser
+logout

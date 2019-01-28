@@ -4,3 +4,4 @@ create
 Sell-StandUser
 sell-standard
 not-a-num
+logout
