@@ -1,0 +1,7 @@
+login
+RealUser
+create
+Sell-StandUser
+sell-standard
+1000000.00
+logout

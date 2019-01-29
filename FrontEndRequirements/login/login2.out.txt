@@ -1,0 +1,2 @@
+Please Enter a Username:
+Error username does not exist

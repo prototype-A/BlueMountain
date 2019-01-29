@@ -1,0 +1,5 @@
+Please Enter a Username:
+Login successful
+Please Enter a username:
+Delete successful
+Logout successful
