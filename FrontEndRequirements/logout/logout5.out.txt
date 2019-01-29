@@ -1,4 +1,0 @@
-Please Enter a Username:
-Login successful
-Logout successful
-Error already loggedout

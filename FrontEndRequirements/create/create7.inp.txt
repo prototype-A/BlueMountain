@@ -1,7 +1,0 @@
-login
-RealUser
-create
-Sell-StandUser
-sell-standard
-500.00
-logout

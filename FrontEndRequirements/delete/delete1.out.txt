@@ -1,4 +1,0 @@
-Please Enter a Username:
-Login successful
-Error not priviledged
-Logout successful

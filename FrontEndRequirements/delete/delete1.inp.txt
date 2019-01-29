@@ -1,5 +1,0 @@
-login
-UnprivUser
-delete
-AdminUser
-logout

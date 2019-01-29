@@ -1,4 +1,0 @@
-Please Enter a Username:
-Login successful
-Error user does not exist
-Logout successful

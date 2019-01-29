@@ -1,5 +1,0 @@
-login
-RealUser
-delete
-NotRealUser
-logout

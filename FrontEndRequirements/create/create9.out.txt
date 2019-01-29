@@ -1,7 +1,0 @@
-Please Enter a Username:
-Login successful
-Please Enter a new Username:
-Please Enter a TYPE:
-Please Enter the amount of credit:
-Error invalid credit
-Logout successful

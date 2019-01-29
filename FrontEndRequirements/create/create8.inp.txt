@@ -1,4 +1,0 @@
-login
-UnprivUser
-create
-logout
