@@ -1,1 +1,1 @@
-00 RealUser        AA 000500.00
+00 UnprivUser      AA 000500.00
