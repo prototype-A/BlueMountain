@@ -2,3 +2,7 @@ Administrator   AA 500000.00
 FS Test Account FS 005000.00
 SS Test Seller  SS 001000.00
 BS Test Buyer   BS 010000.00
+RealUser        AA 010000.00
+UnprivUser      BS 010000.00
+TestDelUser     BS 010000.00
+AdminUser       AA 010000.00
