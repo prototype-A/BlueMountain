@@ -1,0 +1,2 @@
+02 RealUser        AA 000500.00
+00 RealUser        AA 000000000
