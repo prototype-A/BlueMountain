@@ -8,8 +8,9 @@ int main(){
         std::string input;
         std::cin >> input;
 		if (input.compare("login") == 0) {
-			Login.login();
-			std::cout << "login" << std::endl;
+			if (Login::login()) {
+				std::cout << "login" << std::endl;
+			}
 		}
 		else if (input.compare("logout") == 0) {
 			std::cout << "logout" << std::endl;
