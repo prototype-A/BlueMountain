@@ -1,5 +1,8 @@
 #include <string>
- 
+#include "User.h"
+struct Type {
+
+};
 class Transaction{
 public:
     static User loggedInUser;

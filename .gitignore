@@ -1,0 +1,12 @@
+
+FrontEndRapidPrototype/.vs/FrontEndRapidPrototype/v15/.suo
+*.db
+*.opendb
+*.ipch
+*.json
+*.sqlite
+*.log
+*.sln
+*.vcxproj
+*.filters
+*.user
