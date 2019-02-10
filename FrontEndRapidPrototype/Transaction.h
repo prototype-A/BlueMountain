@@ -1,17 +1,15 @@
 #include <string>
 #include "User.h"
-struct Type {
 
-};
-class Transaction{
-public:
+class Transaction {
+protected:
+	Transaction();
     static User loggedInUser;
     static std::string transactions;
 
-    static bool isLoggedIn();
-    void addTransaction();
-    void writeToDailyFile();
-    void isType(Type type);
+    bool isLoggedIn();
+    void addTransaction(std::string transac);
+    bool isType(std::string type);
     bool canBuy();
     bool canSell();
 };
