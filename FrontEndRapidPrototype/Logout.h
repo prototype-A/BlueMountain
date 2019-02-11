@@ -12,7 +12,7 @@ public:
 			//Used to set the loggedInUser to NULL
 			User *temp = &loggedInUser;
 			temp = NULL;
-			writeDailyTFile();
+			writeToDailyFile();
 		}
 		else {
 			std::cout << "ERROR: Not logged in";
@@ -23,7 +23,7 @@ public:
 	* transactions string and prints them into the
 	* daily transaction file.
 	*/
-	void writeDailyTFile() {
+	void writeToDailyFile() {
 
 	}
 };

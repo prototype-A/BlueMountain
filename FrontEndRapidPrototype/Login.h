@@ -1,5 +1,6 @@
 #include "Transaction.h"
 #include <iostream>
+#include "UserManager.h"
 class Login : public Transaction{
 public:
 	/*
@@ -22,6 +23,7 @@ public:
 				return false;
 			}
 			else {
+				//loggedInUser = UserManager::getUser(username);
 				std::cout << "Login sucessful!";
 			}
 		}

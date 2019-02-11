@@ -24,9 +24,13 @@ public:
 			std::cout << "User does not exist.";
 		}
 	};
+	/*
+	 * Creates a new transaction string formatted correctly
+	 * to be later added to the dailytransaction file.
+	 */
 	void Delete::addTransaction(User user) {
 		std::string username = InputParser::parseTransacName(user.getName());
-		std::string deleteTransaction = "05_" + username + "_" ;
+		std::string deleteTransaction = "00_" + username + "_" ;
 		Transaction::addTransaction(deleteTransaction);
 	}
 };
