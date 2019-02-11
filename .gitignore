@@ -10,3 +10,6 @@ FrontEndRapidPrototype/.vs/FrontEndRapidPrototype/v15/.suo
 *.vcxproj
 *.filters
 *.user
+*.tlog
+*.obj
+*.pdb

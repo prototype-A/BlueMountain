@@ -2,8 +2,8 @@
 #include <iostream>
 class Logout : public Transaction{
 public:
-	static void logout() {
-		if (isLoggedIn()) {
+	void logout() {
+		if (Transaction::isLoggedIn()) {
 			//Used to set the loggedInUser to NULL
 			User *temp = &loggedInUser;
 			temp = NULL;
