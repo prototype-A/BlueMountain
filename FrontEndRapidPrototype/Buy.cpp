@@ -7,7 +7,7 @@
 void Buy::buyTickets() {
 	try {
 		// Check if sell-only account
-		if (loggedInUser.getType() == "SS") {
+		if (loggedInUser.getType().compare("SS") == 0) {
 			std::cout << "This account does not have the ability to "
 					  << "purchase tickets" << std::endl;
 			return;
