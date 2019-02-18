@@ -1,11 +1,9 @@
-#include <iostream>
 #include <string>
 #include "User.h"
-class UserManager {
-    User getUser(std::string name){
 
-    }
-    bool exists(std::string name){
-        
-    }
+
+class UserManager {
+public:
+    static User getUser(std::string name);
+    static bool exists(std::string name);
 };
