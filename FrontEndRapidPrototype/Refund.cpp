@@ -73,8 +73,8 @@ void Refund::addTransaction(User buyer, User seller, double amount) {
 	std::string buyerName = InputParser::parseTransacName(buyer.getName());
 	std::string sellerName = InputParser::parseTransacName(seller.getName());
 	std::string transacAmount = InputParser::parseTransacAmount(amount);
-	std::string refundTransaction = "05_" + buyerName + "_" +
-									 sellerName + "_" + 
+	std::string refundTransaction = "05 " + buyerName + " " +
+									 sellerName + " " + 
 									 transacAmount;
 	Transaction::addTransaction(refundTransaction);
 }
