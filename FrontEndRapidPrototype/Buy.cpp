@@ -1,7 +1,6 @@
 #include "Buy.h"
 #include "InputParser.h"
 #include <iostream>
-#include <string>
 
 
 void Buy::buyTickets() {
@@ -46,12 +45,17 @@ void Buy::buyTickets() {
 			throw new TransactionException("Seller's username cannot be blank");
 		}
 
+
 		/*
-		 * TODO:- Handle case for not enough credit on user account to buy tickets
+		 * TODO:- Get ticket price for event
+		 *		- Handle case for not enough credit on user account to buy tickets
 		 *		- Handle case for not enough tickets to fulfil order
 		 * 		- Handle actual purchase transaction
 		 */
 
+
+		// Transaction completed
+		//addTransaction(eventName, sellerName, numTickets, ticketPrice);
 	} catch (TransactionException e) {
 		// Invalid input during transaction
 		std::cout << e.what() << std::endl;
@@ -61,9 +65,22 @@ void Buy::buyTickets() {
 	}
 }
 
-void Buy::addTransaction(std::string eventName, int numTickets, double ticketPrice) {
+/**
+ * Formats and adds the completed transaction to the
+ * list of transactions made during current user session
+ *
+ * @param eventName The name of the event
+ * @param sellerName The username of the seller account
+ * @param numTickets The number of tickets for sale
+ * @param ticketPrice The price of each ticket
+ */
+void Buy::addTransaction(std::string eventName,
+						 std::string sellerName,
+						 int numTickets,
+						 double ticketPrice) {
 	std::string buyTransaction = "04 " + 
 		InputParser::parseTransacEventName(eventName) + " " + 
+		InputParser::parseTransacName(sellerName) + " " +
 		InputParser::parseTransacTickets(numTickets) + " " + 
 		InputParser::parseTransacTicketPrice(ticketPrice);
 
