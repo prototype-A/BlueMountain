@@ -1,6 +1,8 @@
 #include <cmath>
 #include "InputParser.h"
 #include <iostream>
+#include "Transaction.h"
+#include "UserManager.h"
 
 
 /**
@@ -28,6 +30,23 @@ void InputParser::parseTransaction(std::string input) {
 		std::cout << "sell" << std::endl;
 	} else {
 		std::cout << "Invalid transaction" << std::endl;
+	}
+}
+
+/**
+ * Returns the specified double amount as a string,
+ * padded with 0's on the left (if needed) to fill
+ * len characters
+ *
+ * @param amount The int amount to pad
+ * @param len The length of the string to pad to
+ * @return The string of the double amount, padded to len characters
+ */
+void InputParser::parseIsValidUsername(std::string name) {
+	if (name.compare("") == 0) {
+		throw new TransactionException("Username cannot be blank");
+	} else if (!UserManager::exists(name)) {
+		throw new TransactionException("Account does not exist");
 	}
 }
 

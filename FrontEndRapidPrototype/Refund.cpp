@@ -12,30 +12,44 @@
  * account to another user (buyer) account
  */
 void Refund::refund() {
-	std::cout << "Enter the username of buyer account: ";
-	std::string buyerName;
-	std::cin >> buyerName;
-	if (UserManager::exists(buyerName)) {
-		std::cout << "Account does not exist" << std::endl;
-		return;
+	try {
+		// Non-admin accounts cannot issue refund transactions
+		if (!isType("AA")) {
+			throw new TransactionException("This account does not have the ability to issue refunds");
+		}
+
+		// Get user input for account to add credit to
+		std::cout << "Enter the username of buyer account: ";
+		std::string buyerName = "";
+		std::cin >> buyerName;
+		InputParser::parseIsValidUsername(buyerName);
+		User buyer = UserManager::getUser(buyerName);
+
+		// Get user input for account to remove credit from
+		std::cout << "Enter the username of seller account: ";
+		std::string sellerName = "";
+		std::cin >> sellerName;
+		InputParser::parseIsValidUsername(buyerName);
+		User seller = UserManager::getUser(sellerName);
+
+		// Get user input on 
+		std::cout << "Enter the amount to refund: $";
+		double refundAmount = 0;
+		std::cin >> refundAmount;
+		if (refundAmount < 0 || refundAmount > 999999.99) {
+			// Cannot refund negative amount or more than account credit hard limit
+			throw new TransactionException("Amount to refund must be a valid number between 0-999999.99");
+		}
+
+		// Issue refund
+		refund(buyer, seller, refundAmount);
+	} catch (TransactionException e) {
+		// Invalid input during transaction
+		std::cout << e.what() << std::endl;
+	} catch (...) {
+		// Unexpected exception occurred during transaction
+		std::cout << "An error occurred. Please try again." << std::endl;
 	}
-	User buyer = UserManager::getUser(buyerName);
-
-	std::cout << "Enter the username of seller account: ";
-	std::string sellerName;
-	std::cin >> sellerName;
-	if (UserManager::exists(sellerName)) {
-		std::cout << "Account does not exist" << std::endl;
-		return;
-	}
-	User seller = UserManager::getUser(sellerName);
-
-	std::cout << "Enter the amount to refund: ";
-	double refundAmount;
-	std::cin >> refundAmount;
-
-
-	refund(buyer, seller, refundAmount);
 }
 
 
@@ -51,12 +65,26 @@ void Refund::refund() {
  */
 void Refund::refund(User buyer, User seller, double amount) {
 	try {
+		if ((buyer.getBalance() + amount) > 999999.99) {
+			// Buyer's credit balance will go over account hard limit after refund
+			throw new TransactionException("Buyer has too much credit in balance to issue refund");
+		} else if ((seller.getBalance() - amount) < 0) {
+			// Seller does not have enough credit to refund to buyer
+			throw new TransactionException("Seller has insufficient credit to issue refund");
+		}
+
+		// Perform refund
 		buyer.addCredit(amount);
 		seller.removeCredit(amount);
 
+		// Add completed transaction to list for current session
 		addTransaction(buyer, seller, amount);
-	} catch (std::string e) {
-		std::cout << e << std::endl;
+	} catch (TransactionException e) {
+		// Invalid input during transaction
+		std::cout << e.what() << std::endl;
+	} catch (...) {
+		// Unexpected exception occurred during transaction
+		std::cout << "An error occurred. Please try again." << std::endl;
 	}
 }
 
@@ -70,11 +98,8 @@ void Refund::refund(User buyer, User seller, double amount) {
  * @param amount The amount of credit to refund
  */
 void Refund::addTransaction(User buyer, User seller, double amount) {
-	std::string buyerName = InputParser::parseTransacName(buyer.getName());
-	std::string sellerName = InputParser::parseTransacName(seller.getName());
-	std::string transacAmount = InputParser::parseTransacAmount(amount);
-	std::string refundTransaction = "05 " + buyerName + " " +
-									 sellerName + " " + 
-									 transacAmount;
-	Transaction::addTransaction(refundTransaction);
+	Transaction::addTransaction("05 " + 
+		InputParser::parseTransacName(buyer.getName()) + " " +
+		InputParser::parseTransacName(seller.getName()) + " " + 
+		InputParser::parseTransacAmount(amount));
 }
