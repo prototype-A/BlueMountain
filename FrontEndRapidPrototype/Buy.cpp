@@ -78,11 +78,9 @@ void Buy::addTransaction(std::string eventName,
 						 std::string sellerName,
 						 int numTickets,
 						 double ticketPrice) {
-	std::string buyTransaction = "04 " + 
+	Transaction::addTransaction("04 " + 
 		InputParser::parseTransacEventName(eventName) + " " + 
 		InputParser::parseTransacName(sellerName) + " " +
 		InputParser::parseTransacTickets(numTickets) + " " + 
-		InputParser::parseTransacTicketPrice(ticketPrice);
-
-	Transaction::addTransaction(buyTransaction);
+		InputParser::parseTransacTicketPrice(ticketPrice));
 }
