@@ -6,7 +6,7 @@
 void Buy::buyTickets() {
 	try {
 		// Check if sell-only account
-		if (loggedInUser.getType().compare("SS") == 0) {
+		if (isType("SS")) {
 			std::cout << "This account does not have the ability to "
 					  << "purchase tickets" << std::endl;
 			return;
@@ -28,7 +28,7 @@ void Buy::buyTickets() {
 		std::cout << "Enter number of tickets to purchase: ";
 		int numTickets = 0;
 		std::cin >> numTickets;
-		if (numTickets > 4 && loggedInUser.getType().compare("AA") != 0) {
+		if (numTickets > 4 && !isType("AA")) {
 			// Standard users may only purchase up to 4 tickets
 			throw new TransactionException("Standard users may only purchase a maximum of 4 tickets per session");
 		} else if (numTickets <= 0) {
@@ -40,10 +40,7 @@ void Buy::buyTickets() {
 		std::cout << "Enter seller's username: ";
 		std::string sellerName = "";
 		std::cin >> sellerName;
-		if (sellerName.compare("") == 0) {
-			// Seller username is empty
-			throw new TransactionException("Seller's username cannot be blank");
-		}
+		InputParser::parseIsValidUsername(sellerName);
 
 
 		/*

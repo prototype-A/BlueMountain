@@ -19,7 +19,7 @@ bool Transaction::isLoggedIn() {
  * @return Whether the user account is the specified account type
  */
 bool Transaction::isType(std::string type) {
-	return (loggedInUser.getType() == type);
+	return (loggedInUser.getType().compare(type) == 0);
 }
 
 /**

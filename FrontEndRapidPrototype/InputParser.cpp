@@ -44,8 +44,10 @@ void InputParser::parseTransaction(std::string input) {
  */
 void InputParser::parseIsValidUsername(std::string name) {
 	if (name.compare("") == 0) {
+		// Blank username entered
 		throw new TransactionException("Username cannot be blank");
 	} else if (!UserManager::exists(name)) {
+		// User does not exist
 		throw new TransactionException("Account does not exist");
 	}
 }
