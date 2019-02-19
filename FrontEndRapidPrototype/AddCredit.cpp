@@ -21,7 +21,7 @@ void AddCredit::addCredit() {
 		}
 
 		// Admin User: Get user input on username of account to add credit to
-		if (loggedInUser.getType() == "AA") {
+		if (loggedInUser.getType().compare("AA")) {
 			std::cout << "Enter username of account to add credit to: ";
 			std::string username;
 			std::cin >> username;
