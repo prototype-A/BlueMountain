@@ -11,6 +11,10 @@
 	* daily tranaction file.
 */
 void Delete::deleteUser() {
+    //Check if the user is logged
+    if(!Transaction::isLoggedIn()){
+        throw new TransactionException("Not Logged In");
+    }
 	std::string username;
 	std::cout << "Please enter a username you wish to delete.";
 	std::cin >> username;
@@ -20,9 +24,10 @@ void Delete::deleteUser() {
 		addTransaction(user);
 	}
 	else {
-		std::cout << "User does not exist.";
+		throw new TransactionException("User does not exist.");
 	}
 };
+
 /*
  * Creates a new transaction string formatted correctly
  * to be later added to the dailytransaction file.

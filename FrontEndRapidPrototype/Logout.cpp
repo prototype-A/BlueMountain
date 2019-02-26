@@ -7,6 +7,10 @@
 * file for creation.
 */
 void Logout::logout() {
+    //Check if the user is logged
+    if(!Transaction::isLoggedIn()){
+        throw new TransactionException("Not Logged In");
+    }
 	if (Transaction::isLoggedIn()) {
 		//Used to set the loggedInUser to NULL
 		User *temp = &loggedInUser;
