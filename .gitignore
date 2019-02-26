@@ -13,3 +13,4 @@ FrontEndRapidPrototype/.vs/FrontEndRapidPrototype/v15/.suo
 *.tlog
 *.obj
 *.pdb
+*.o
