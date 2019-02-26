@@ -15,10 +15,10 @@ public:
 		std::string username;
 		std::cout << "Please enter a username you wish to delete.";
 		std::cin >> username;
-		if (UserManager::exists()) {
+		if (UserManager::exists(username)) {
 			std::cout << "Delete successful!";
-			User username = UserManager::getUser(username);
-			addTransaction(username);
+			User user = UserManager::getUser(username);
+			addTransaction(user);
 		}
 		else {
 			std::cout << "User does not exist.";
@@ -28,7 +28,7 @@ public:
 	 * Creates a new transaction string formatted correctly
 	 * to be later added to the dailytransaction file.
 	 */
-	void Delete::addTransaction(User user) {
+	void addTransaction(User user) {
 		std::string username = InputParser::parseTransacName(user.getName());
 		std::string deleteTransaction = "00_" + username + "_" ;
 		Transaction::addTransaction(deleteTransaction);

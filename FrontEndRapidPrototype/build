@@ -1,0 +1,1 @@
+g++ main.cpp Buy.cpp Refund.cpp Sell.cpp Transaction.cpp User.cpp InputParser.cpp Login.h Logout.h Create.h Delete.h -o test

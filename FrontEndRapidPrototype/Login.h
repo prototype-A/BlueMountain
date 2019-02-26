@@ -17,7 +17,7 @@ public:
 			std::cout << "Please Enter a Username:	";
 			std::string username;
 			std::cin >> username;
-			if (username.length > 15 | username.length < 1) {
+			if (username.length() > 15 | username.length() < 1) {
 				//TODO add other catches
 				std::cout << "Username wrong length.";
 				return false;

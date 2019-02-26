@@ -42,7 +42,7 @@ public:
 	 * Creates a new transaction string formatted correctly
 	 * to be later added to the dailytransaction file.
 	 */
-	void Create::addTransaction(User username, Type type, double balance) {
+	void addTransaction(User username, Type type, double balance) {
 		std::string usernameStr = InputParser::parseTransacName(username.getName());
 		std::string createTransaction = "01_" + usernameStr + "_";
 		Transaction::addTransaction(createTransaction);
