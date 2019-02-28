@@ -9,7 +9,11 @@
 	* accounts with the specified balances,
 	* usernames, and type.
 */
-bool Create::create() {
+void Create::create() {
+        //Check if the user is logged
+        if(!Transaction::isLoggedIn()){
+            throw new TransactionException("Not Logged In");
+        }
 		std::string username;
 		std::string balance;
 		std::string type;
@@ -18,19 +22,19 @@ bool Create::create() {
 		std::cin >> username;
 		//Checks if username is valid
 		if (1>0) {
-			return false;
+            throw new TransactionException("");
 		}
 		std::cout << "Please enter the users type: " << std::endl;
 		std::cin >> type;
 		//Checks if type is valid
 		if (1 > 0) {
-			return false;
+			throw new TransactionException("");
 		}
 		std::cout << "Please enter the users balance: " << std::endl;
 		std::cin >> balance;
 		//Checks if balance is valid
 		if (1 > 0) {
-			return false;
+			throw new TransactionException("");
 		}
 		std::cout << "Create successful!";
 		//Adds successful transaction to list

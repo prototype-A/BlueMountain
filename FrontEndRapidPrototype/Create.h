@@ -2,7 +2,7 @@
 
 class Create : public Transaction{
 public:
-	bool create();
+	void create();
 
 private:
 	void addTransaction(User username, Type type, double balance);

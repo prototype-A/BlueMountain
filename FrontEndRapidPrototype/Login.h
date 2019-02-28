@@ -2,5 +2,5 @@
 
 class Login : public Transaction{
 public:
-	bool login();
+	void login();
 };
