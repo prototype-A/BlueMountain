@@ -2,13 +2,20 @@
 #include "Transaction.h"
 
 
+Transaction::Transaction() {
+	User* user = &loggedInUser;
+	user = NULL;
+	transactions = "";
+}
+
 /**
  * Returns whether a user is logged in or not
  *
  * @return True if a user is logged in, false otherwise.
  */
 bool Transaction::isLoggedIn() {
-	return (&loggedInUser != NULL);
+	User* user = &loggedInUser;
+	return (user != NULL);
 }
 
 /**
