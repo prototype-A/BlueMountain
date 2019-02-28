@@ -13,6 +13,11 @@
  */
 void Refund::refund() {
 	try {
+		// Check if a user is logged in
+		if (!isLoggedIn()) {
+			throw new TransactionException("Please log in first");
+		}
+
 		// Non-admin accounts cannot issue refund transactions
 		if (!isType("AA")) {
 			throw new TransactionException("This account does not have the ability to issue refunds");

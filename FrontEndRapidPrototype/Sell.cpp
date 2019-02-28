@@ -5,6 +5,11 @@
 
 void Sell::sellTickets() {
 	try {
+		// Check if a user is logged in
+		if (!isLoggedIn()) {
+			throw new TransactionException("Please log in first");
+		}
+
 		// Check if buy-only account
 		if (isType("BS")) {
 			throw new TransactionException("This account does not have the ability to sell tickets");

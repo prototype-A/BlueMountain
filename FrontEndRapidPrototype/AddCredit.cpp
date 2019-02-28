@@ -7,6 +7,11 @@
 
 void AddCredit::addCredit() {
 	try {
+		// Check if a user is logged in
+		if (!isLoggedIn()) {
+			throw new TransactionException("Please log in first");
+		}
+
 		// Get user input for amount of credit to add
 		std::cout << "Enter amount of credit to add: ";
 		double amount;
