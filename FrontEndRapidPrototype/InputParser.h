@@ -11,7 +11,7 @@ public:
 	static std::string parseTransacName(std::string name);
 	static std::string parseTransacEventName(std::string name);
 private:
-	static std::string padNumAmount(int amount, int len);
-	static std::string padNumAmount(double amount, int len);
-	static std::string padString(std::string str, int len);
+	static std::string padNumAmount(int amount, unsigned int len);
+	static std::string padNumAmount(double amount, unsigned int len);
+	static std::string padString(std::string str, unsigned int len);
 };

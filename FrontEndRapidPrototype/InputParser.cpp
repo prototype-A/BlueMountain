@@ -61,7 +61,7 @@ void InputParser::parseIsValidUsername(std::string name) {
  * @param len The length of the string to pad to
  * @return The string of the double amount, padded to len characters
  */
-std::string InputParser::padNumAmount(int amount, int len) {
+std::string InputParser::padNumAmount(int amount, unsigned int len) {
 	std::string strAmount = std::to_string(amount);
 
 	// Balance is already len characters
@@ -70,7 +70,7 @@ std::string InputParser::padNumAmount(int amount, int len) {
 	}
 
 	// Pad balance to len characters
-	for (int i = 0; i < len - strAmount.length(); i++) {
+	for (unsigned int i = 0; i < len - strAmount.length(); i++) {
 		strAmount = " " + strAmount;
 	}
 
@@ -98,7 +98,7 @@ std::string InputParser::parseTransacTickets(int numTickets) {
  * @param len The length of the string to pad to
  * @return The string of the double amount, padded to len characters
  */
-std::string InputParser::padNumAmount(double amount, int len) {
+std::string InputParser::padNumAmount(double amount, unsigned int len) {
 	std::string strAmount = std::to_string(amount);
 
 	// Add ".00", if amount of cents is 0
@@ -112,7 +112,7 @@ std::string InputParser::padNumAmount(double amount, int len) {
 	}
 
 	// Pad balance to 9 characters
-	for (int i = 0; i < len - strAmount.length(); i++) {
+	for (unsigned int i = 0; i < len - strAmount.length(); i++) {
 		strAmount = " " + strAmount;
 	}
 
@@ -151,7 +151,7 @@ std::string InputParser::parseTransacAmount(double amount) {
  * @param len The length to pad the string to
  * @return The string padded to len characters
  */
-std::string InputParser::padString(std::string str, int len) {
+std::string InputParser::padString(std::string str, unsigned int len) {
 	// String is already of specified length
 	if (str.length() == len) {
 		return str;
@@ -159,7 +159,7 @@ std::string InputParser::padString(std::string str, int len) {
 
 	// Pad str to len characters with spaces at the end
 	std::string paddedStr = str;
-	for (int i = 0; i < len - str.length(); i++) {
+	for (unsigned int i = 0; i < len - str.length(); i++) {
 		paddedStr += " ";
 	}
 

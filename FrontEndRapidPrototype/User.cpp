@@ -69,5 +69,6 @@ std::string User::getType() {
 		case Type::FS: return "FS";
 		case Type::SS: return "SS";
 		case Type::BS: return "BS";
+		default: return "";
 	}
 }
