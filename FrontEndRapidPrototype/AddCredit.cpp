@@ -41,26 +41,18 @@ void AddCredit::addCredit() {
 }
 
 void AddCredit::addCredit(User user, double amount) {
-	try {
-		// User's credit balance will surpass account hard limit
-		if ((user.getBalance() + amount) > 999999.99) {
-			throw new TransactionException("Users may only have up to $999999.99 of credit");
-		}
-
-		// Add the amount to the user's credit balance
-		sessionCreditLimit -= amount;
-		user.addCredit(amount);
-
-		// Add completed transaction to list for current session
-		addTransaction("06 " + 
-			InputParser::parseTransacName(user.getName()) + " " + 
-			user.getType() + " " + 
-			InputParser::parseTransacAmount(user.getBalance()));
-	} catch (TransactionException e) {
-		// Invalid input during transaction
-		std::cout << e.what() << std::endl;
-	} catch (...) {
-		// Unexpected exception occurred during transaction
-		std::cout << "An error occurred. Please try again." << std::endl;
+	// User's credit balance will surpass account hard limit
+	if ((user.getBalance() + amount) > 999999.99) {
+		throw new TransactionException("Users may only have up to $999999.99 of credit");
 	}
+
+	// Add the amount to the user's credit balance
+	sessionCreditLimit -= amount;
+	user.addCredit(amount);
+
+	// Add completed transaction to list for current session
+	addTransaction("06 " + 
+		InputParser::parseTransacName(user.getName()) + " " + 
+		user.getType() + " " + 
+		InputParser::parseTransacAmount(user.getBalance()));
 }

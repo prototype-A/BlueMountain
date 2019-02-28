@@ -7,9 +7,7 @@ void Sell::sellTickets() {
 	try {
 		// Check if buy-only account
 		if (isType("BS")) {
-			std::cout << "This account does not have the ability to "
-					  << "sell tickets" << std::endl;
-			return;
+			throw new TransactionException("This account does not have the ability to sell tickets");
 		}
 		
 		// Get user input for event name
