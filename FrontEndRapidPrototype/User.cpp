@@ -1,4 +1,3 @@
-#include <string>
 #include "User.h"
 
 
@@ -71,4 +70,11 @@ std::string User::getType() {
 		case Type::BS: return "BS";
 		default: return "";
 	}
+}
+
+void User::setName(std::string n){
+	name = n;
+}
+void User::setType(Type t){
+	type = t;
 }

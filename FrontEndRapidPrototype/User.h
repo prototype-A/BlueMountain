@@ -16,6 +16,8 @@ public:
 	double getBalance();
 	std::string getName();
 	std::string getType();
+	void setName(std::string n);
+	void setType(Type t);
 private:
 	std::string name;
 	double credit;
