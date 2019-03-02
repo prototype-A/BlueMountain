@@ -34,6 +34,6 @@ void Delete::deleteUser() {
  */
 void Delete::addTransaction(User user) {
 	std::string username = InputParser::parseTransacName(user.getName());
-	std::string deleteTransaction = "00_" + username + "_" ;
+	std::string deleteTransaction = "02_" + username + "_" + std::to_string(user.getBalance());
 	Transaction::addTransaction(deleteTransaction);
 };

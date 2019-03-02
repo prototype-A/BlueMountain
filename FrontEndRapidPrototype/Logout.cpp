@@ -9,16 +9,12 @@
 void Logout::logout() {
     //Check if the user is logged
     if(!Transaction::isLoggedIn()){
-        throw new TransactionException("Not Logged In");
-    }
-	if (Transaction::isLoggedIn()) {
+        throw new TransactionException("Not logged in.");
+    }else{
 		//Used to set the loggedInUser to NULL
 		User *temp = &loggedInUser;
 		temp = NULL;
 		writeToDailyFile();
-	}
-	else {
-		std::cout << "ERROR: Not logged in";
 	}
 };
 

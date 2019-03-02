@@ -2,6 +2,7 @@
 #include "InputParser.h"
 #include <iostream>
 #include <string>
+#include "User.h"
 
 /*
 	* Displays prompts to the admin user
@@ -16,37 +17,53 @@ void Create::create() {
         }
 		std::string username;
 		std::string balance;
-		std::string type;
-
+		std::string strtype;
+		Type type;
 		std::cout << "Please enter a new username: " << std::endl;
 		std::cin >> username;
 		//Checks if username is valid
-		if (1>0) {
-            throw new TransactionException("");
+		if (username.size()>15 | username.size()<1) {
+            throw new TransactionException("Username wrong size.");
 		}
 		std::cout << "Please enter the users type: " << std::endl;
-		std::cin >> type;
+		std::cin >> strtype;
 		//Checks if type is valid
-		if (1 > 0) {
-			throw new TransactionException("");
+		if (strtype.compare("AA")) {
+			type = AA;
+		}else if(strtype.compare("BS")){
+			type = BS;
+		}else if(strtype.compare("FS")){
+			type = FS;
+		}else if(strtype.compare("SS")){
+			type = SS;
+		}else{
+			throw new TransactionException("Not a valid type.");
 		}
 		std::cout << "Please enter the users balance: " << std::endl;
 		std::cin >> balance;
 		//Checks if balance is valid
-		if (1 > 0) {
-			throw new TransactionException("");
+		if (std::stod(balance) > 999999.99) {
+			throw new TransactionException("Balance too large.");
+		} else if (std::stod(balance) < 0) {
+			throw new TransactionException("Balance too small.");
 		}
 		std::cout << "Create successful!";
+		//Creates the user with the data
+		User user;
+		user.setName(username);
+		user.addCredit(std::stod(balance));
+		user.setType(type);
+
 		//Adds successful transaction to list
-		//addTransaction(username, type, balance);
+		addTransaction(user, type, std::stod(balance));
 };
 
 /*
  * Creates a new transaction string formatted correctly
  * to be later added to the dailytransaction file.
  */
-void Create::addTransaction(User username, Type type, double balance) {
-	std::string usernameStr = InputParser::parseTransacName(username.getName());
-	std::string createTransaction = "01_" + usernameStr + "_";
+void Create::addTransaction(User user, Type type, double balance) {
+	std::string username = InputParser::parseTransacName(user.getName());
+	std::string createTransaction = "01_" + username + "_" + user.getType() + "_" + std::to_string(user.getBalance());
 	Transaction::addTransaction(createTransaction);
 };

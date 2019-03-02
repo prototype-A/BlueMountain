@@ -24,7 +24,7 @@ void Login::login() {
 		}
 		else {
 			loggedInUser = UserManager::getUser(username);
-			throw new TransactionException("Login sucessful!");
+			std::cout<<"Login sucessful!";
 		}
 	}
 };
