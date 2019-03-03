@@ -1,13 +1,13 @@
 CC = g++
-CFLAGS = -c -Wall
+CFLAGS = -c -Wall -Wextra
 OBJ = $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 EXE = main
 
 
-all: $(EXE)
+all: $(OBJ) $(EXE)
 
-$(EXE): $(OBJ)
-	$(CC) -o $@ $(EXE).o InputParser.o UserManager.o
+$(EXE): InputParser.o UserManager.o User.o
+	$(CC) -o $@ $(EXE).o $^
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -o $@ $<
