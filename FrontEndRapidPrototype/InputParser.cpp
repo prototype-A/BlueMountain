@@ -22,34 +22,42 @@
  * @param input The input to parse
  */
 void InputParser::parseTransaction(std::string input) {
-	if (input.compare("login") == 0) {
-		Login* loginTransaction = new Login();
-		loginTransaction->login();
-	} else if (input.compare("logout") == 0) {
-		Logout* logoutTransaction = new Logout();
-		logoutTransaction->logout();
-	} else if (input.compare("create") == 0) {
-		Create* createUserTransaction = new Create();
-		createUserTransaction->create();
-	} else if (input.compare("delete") == 0) {
-		Delete* deleteUserTransaction = new Delete();
-		deleteUserTransaction->deleteUser();
-	} else if (input.compare("buy") == 0) {
-		Buy* buyTicketsTransaction = new Buy();
-		buyTicketsTransaction->buyTickets();
-	} else if (input.compare("addcredit") == 0) {
-		AddCredit* addCreditTransaction = new AddCredit();
-		addCreditTransaction->addCredit();
-	} else if (input.compare("refund") == 0) {
-		Refund* refundUserTransaction = new Refund();
-		refundUserTransaction->refund();
-	} else if (input.compare("sell") == 0) {
-		Sell* sellTicketsTransaction = new Sell();
-		sellTicketsTransaction->sellTickets();
-	} else if (input.compare("quit") == 0) {
-		exit(0);
-	} else {
-		std::cout << "Invalid transaction" << std::endl;
+	try {
+		if (input.compare("login") == 0) {
+			Login* loginTransaction = new Login();
+			loginTransaction->login();
+		} else if (input.compare("logout") == 0) {
+			Logout* logoutTransaction = new Logout();
+			logoutTransaction->logout();
+		} else if (input.compare("create") == 0) {
+			Create* createUserTransaction = new Create();
+			createUserTransaction->create();
+		} else if (input.compare("delete") == 0) {
+			Delete* deleteUserTransaction = new Delete();
+			deleteUserTransaction->deleteUser();
+		} else if (input.compare("buy") == 0) {
+			Buy* buyTicketsTransaction = new Buy();
+			buyTicketsTransaction->buyTickets();
+		} else if (input.compare("addcredit") == 0) {
+			AddCredit* addCreditTransaction = new AddCredit();
+			addCreditTransaction->addCredit();
+		} else if (input.compare("refund") == 0) {
+			Refund* refundUserTransaction = new Refund();
+			refundUserTransaction->refund();
+		} else if (input.compare("sell") == 0) {
+			Sell* sellTicketsTransaction = new Sell();
+			sellTicketsTransaction->sellTickets();
+		} else if (input.compare("quit") == 0) {
+			exit(0);
+		} else {
+			std::cout << "Invalid transaction" << std::endl;
+		}
+	} catch (TransactionException e) {
+		// Print error message
+		std::cout << e.what() << std::endl;
+	} catch (...) {
+		// An unexpected exception occurred during transaction
+		std::cout << "An error occurred. Please try again." << std::endl;
 	}
 }
 
