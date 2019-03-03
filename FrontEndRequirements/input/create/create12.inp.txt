@@ -1,7 +1,0 @@
-login
-RealUser
-create
-Test-NegUser
-sell-standard
--25.00
-logout

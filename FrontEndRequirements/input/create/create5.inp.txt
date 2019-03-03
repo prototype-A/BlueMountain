@@ -1,7 +1,0 @@
-login
-RealUser
-create
-Full-StandUser
-full-standard
-500.00
-logout
