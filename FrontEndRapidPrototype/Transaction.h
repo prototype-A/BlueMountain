@@ -1,13 +1,15 @@
+#pragma once
 #include <string>
 #include "TransactionException.h"
 #include "User.h"
+
 
 class Transaction {
 protected:
 	Transaction();
 
-    static User loggedInUser;
-    static std::string transactions;
+    inline static User loggedInUser;
+    inline static std::string transactions;
 
     bool isLoggedIn();
     void addTransaction(std::string transac);

@@ -1,16 +1,16 @@
 CC = g++
-CFLAGS = -c -Wall -Wextra
+CFLAGS = -Wall -Wextra -std=c++1z
 OBJ = $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 EXE = main
 
 
 all: $(OBJ) $(EXE)
 
-$(EXE): InputParser.o UserManager.o User.o
-	$(CC) -o $@ $(EXE).o $^
+$(EXE): $(OBJ)
+	$(CC) -o $@ $^
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -o $@ $<
+%.o: %.cpp %.h
+	$(CC) -c $(CFLAGS) -o $@ $<
 
 .PHONY: clean
 

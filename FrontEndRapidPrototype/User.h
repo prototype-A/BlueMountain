@@ -1,5 +1,5 @@
-#include <string>
 #pragma once
+#include <string>
 
 
 enum Type {
@@ -11,6 +11,7 @@ enum Type {
 
 class User {
 public:
+	User();
 	User(std::string name, std::string type, double balance);
 
 	void addCredit(double amount);

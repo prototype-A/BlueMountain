@@ -3,8 +3,6 @@
 
 
 Transaction::Transaction() {
-	User* user = &loggedInUser;
-	user = NULL;
 	transactions = "";
 }
 
@@ -14,8 +12,7 @@ Transaction::Transaction() {
  * @return True if a user is logged in, false otherwise.
  */
 bool Transaction::isLoggedIn() {
-	User* user = &loggedInUser;
-	return (user != NULL);
+	return (loggedInUser.getName().compare("") != 0);
 }
 
 /**

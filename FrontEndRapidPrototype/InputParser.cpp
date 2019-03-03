@@ -1,8 +1,18 @@
 #include <cmath>
-#include "InputParser.h"
 #include <iostream>
-#include "TransactionException.h"
+
+#include "AddCredit.h"
+#include "Buy.h"
+#include "Create.h"
+#include "Delete.h"
+#include "InputParser.h"
+#include "Login.h"
+#include "Logout.h"
+#include "Refund.h"
+#include "Sell.h"
 #include "UserManager.h"
+#include "Transaction.h"
+#include "TransactionException.h"
 
 
 /**
@@ -13,24 +23,32 @@
  */
 void InputParser::parseTransaction(std::string input) {
 	if (input.compare("login") == 0) {
-		std::cout << "login" << std::endl;
+		Login* loginTransaction = new Login();
+		loginTransaction->login();
 	} else if (input.compare("logout") == 0) {
-		std::cout << "logout" << std::endl;
+		Logout* logoutTransaction = new Logout();
+		logoutTransaction->logout();
 	} else if (input.compare("create") == 0) {
-		std::cout << "create" << std::endl;
+		Create* createUserTransaction = new Create();
+		createUserTransaction->create();
 	} else if (input.compare("delete") == 0) {
-		std::cout << "delete" << std::endl;
+		Delete* deleteUserTransaction = new Delete();
+		deleteUserTransaction->deleteUser();
 	} else if (input.compare("buy") == 0) {
-		std::cout << "buy" << std::endl;
+		Buy* buyTicketsTransaction = new Buy();
+		buyTicketsTransaction->buyTickets();
 	} else if (input.compare("addcredit") == 0) {
-		std::cout << "addcredit" << std::endl;
+		AddCredit* addCreditTransaction = new AddCredit();
+		addCreditTransaction->addCredit();
 	} else if (input.compare("refund") == 0) {
-		std::cout << "refund" << std::endl;
+		Refund* refundUserTransaction = new Refund();
+		refundUserTransaction->refund();
 	} else if (input.compare("sell") == 0) {
-		std::cout << "sell" << std::endl;
-	} else if (input.compare("quit") == 0){
+		Sell* sellTicketsTransaction = new Sell();
+		sellTicketsTransaction->sellTickets();
+	} else if (input.compare("quit") == 0) {
 		exit(0);
-	}else{
+	} else {
 		std::cout << "Invalid transaction" << std::endl;
 	}
 }

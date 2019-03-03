@@ -1,6 +1,13 @@
 #include "User.h"
 
 
+User::User() {
+	// Dummy User (Not logged in)
+	this->name = "";
+	this->credit = 0;
+	this->type = Type::BS;
+}
+
 User::User(std::string name, std::string type, double balance) {
 	this->name = name;
 	this->credit = balance;
