@@ -4,7 +4,7 @@ rm resultsfile.txt
 touch resultsfile.txt
 tests=(login logout create delete refund buy addCredit sell);
 numTests=(3 5 6 5 5 5 5 5);
-for i in {0..8}; do 
+for i in {0..7}; do 
     test=${tests[$i]}
     for num in $(seq 1 ${numTests[$i]}); do
         echo $test$num.in
