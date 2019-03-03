@@ -11,6 +11,8 @@ enum Type {
 
 class User {
 public:
+	User(std::string name, std::string type, double balance);
+
 	void addCredit(double amount);
 	void removeCredit(double amount);
 	double getBalance();

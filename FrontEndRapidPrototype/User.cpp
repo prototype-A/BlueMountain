@@ -1,6 +1,20 @@
 #include "User.h"
 
 
+User::User(std::string name, std::string type, double balance) {
+	this->name = name;
+	this->credit = balance;
+	if (type.compare("AA") == 0) {
+		this->type = Type::AA;
+	} else if (type.compare("BS") == 0) {
+		this->type = Type::BS;
+	} else if (type.compare("FS") == 0) {
+		this->type = Type::FS;
+	} else if (type.compare("SS") == 0) {
+		this->type = Type::SS;
+	}
+}
+
 /**
  * Adds a specified amount of credit (no more than
  * 1000.00) to the user account's balance
