@@ -7,9 +7,9 @@ numTests=(4 8 13 4 9 10 5 13);
 for i in {0..7}; do 
     test=${tests[$i]}
     for num in $(seq 1 ${numTests[$i]}); do
-        echo Testing $test$num.in
+        echo Testing $test$num.inp
         #Starts the program and passes in the output of shcat $test$num.in line by line
-        cat $test$num.in |./main currentaccounts.txt availabletickets.txt transout.atf > out.out
+        cat $test$num.inp |./main currentaccounts.txt availabletickets.txt transout.atf > out.out
 
         #Saves the differences between the files and recrods info
         echo Comparing $test$num.out
