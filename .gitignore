@@ -14,6 +14,6 @@ FrontEndRapidPrototype/.vs/FrontEndRapidPrototype/v15/.suo
 *.obj
 *.pdb
 *.o
-*.out
-*.tout
 FrontEndRapidPrototype/main
+out.out
+resultsfile.txt
