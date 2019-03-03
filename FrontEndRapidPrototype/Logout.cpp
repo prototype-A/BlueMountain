@@ -24,5 +24,8 @@ void Logout::logout() {
 * daily transaction file.
 */
 void Logout::writeToDailyFile() {
+	//Writes to file
 
+	//Exits the program (for testing purposes)
+	exit(0);
 }

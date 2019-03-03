@@ -28,7 +28,9 @@ void InputParser::parseTransaction(std::string input) {
 		std::cout << "refund" << std::endl;
 	} else if (input.compare("sell") == 0) {
 		std::cout << "sell" << std::endl;
-	} else {
+	} else if (input.compare("quit") == 0){
+		exit(0);
+	}else{
 		std::cout << "Invalid transaction" << std::endl;
 	}
 }
