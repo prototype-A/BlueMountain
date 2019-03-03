@@ -7,7 +7,7 @@ int main() {
 		// Get user input
         std::string input;
         std::cin >> input;
-
+        
 		// Parse user input
 		InputParser::parseTransaction(input);
     }
