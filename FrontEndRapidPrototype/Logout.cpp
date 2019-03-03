@@ -1,5 +1,6 @@
 #include "Logout.h"
 #include <iostream>
+#include <fstream>
 
 /*
 * Checks to make sure a logout can take
@@ -25,7 +26,11 @@ void Logout::logout() {
 */
 void Logout::writeToDailyFile() {
 	//Writes to file
-
+	std::ofstream dailyTransactionFile;
+	dailyTransactionFile.open("dailytransactionfile.txt");
+	dailyTransactionFile << transactions;
+	dailyTransactionFile.close();
+	
 	//Exits the program (for testing purposes)
 	exit(0);
 }

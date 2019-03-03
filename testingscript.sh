@@ -21,7 +21,7 @@ for i in {0..7}; do
         diff out.out FrontEndRequirements/output/$test/$test$num.out > ErrorReports/$test${num}errors.out
         echo Comparing $test$num.tout
         toutputDiff=$(diff dailytransactionfile.txt FrontEndRequirements/output/$test/$test$num.tout)
-        diff dailytransactionfile.txt ./FrontEndRequirements/output/$test/$test$num.tout > ErrorReports/$test${num}errors.tout
+        diff dailytransactionfile.txt FrontEndRequirements/output/$test/$test$num.tout > ErrorReports/$test${num}errors.tout
         
         #If it passes (diff empty) then records the test as a pass in file
         if [ "$outputDiff" != "" ]
