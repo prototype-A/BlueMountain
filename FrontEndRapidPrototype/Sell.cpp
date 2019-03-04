@@ -17,8 +17,6 @@ void Sell::sellTickets() {
 	// Get user input for event name
 	std::cout << "Enter the event name: ";
 	std::string eventName;
-	// Ignore the newline from initiating transaction
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 	std::getline(std::cin, eventName);
 	if (eventName.compare("") == 0) {
 		// Event name is empty
@@ -30,8 +28,14 @@ void Sell::sellTickets() {
 
 	// Get user input for price of each ticket
 	std::cout << "Enter price of each ticket: $";
-	double ticketPrice = 0;
-	std::cin >> ticketPrice;
+	std::string strTicketPrice;
+	std::getline(std::cin, strTicketPrice);
+
+	// Convert user input to double
+	double ticketPrice = -1;
+	try {
+		ticketPrice = stod(strTicketPrice);
+	} catch (...) {}
 	if (ticketPrice < 0 || ticketPrice > 999.99) {
 		// Can only sell tickets for $0.00-999.99
 		throw new TransactionException("Price of each ticket must be a number between 0.00-999.99");
@@ -39,8 +43,14 @@ void Sell::sellTickets() {
 
 	// Get user input for number of tickets to sell
 	std::cout << "Enter number of tickets to sell: ";
-	int numTickets = 0;
-	std::cin >> numTickets;
+	std::string strNumTickets;
+	std::getline(std::cin, strNumTickets);
+
+	// Convert user input to int
+	int numTickets = -1;
+	try {
+		numTickets = stod(strNumTickets);
+	} catch (...) {}
 	if (numTickets <= 0 || numTickets > 100) {
 		// Can only sell 1-100 tickets
 		throw new TransactionException("Number of tickets to sell must be a positive number between 1-100");

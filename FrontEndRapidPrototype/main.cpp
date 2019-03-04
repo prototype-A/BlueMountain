@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     while (true) {
 		// Get user input
         std::string input;
-        std::cin >> input;
+        std::getline(std::cin, input);
         
 		// Parse user input
 		InputParser::parseTransaction(input);

@@ -13,9 +13,14 @@ void AddCredit::addCredit() {
 
 	// Get user input for amount of credit to add
 	std::cout << "Enter amount of credit to add: ";
-	double amount;
-	std::cin >> amount;
+	std::string strAmount;
+	std::getline(std::cin, strAmount);
 
+	// Convert user input to double
+	double amount = -1;
+	try {
+		amount = stod(strAmount);
+	} catch (...) {}
 	if (amount <= 0.00 || amount > 1000.00) {
 		// Check amount constraints
 		throw new TransactionException("Amount must be a number between 0.01-1000.00");
@@ -28,8 +33,6 @@ void AddCredit::addCredit() {
 		// Admin: Get user input on username of account to add credit to
 		std::cout << "Enter username of account to add credit to: ";
 		std::string username;
-		// Ignore previous newline
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 		std::getline(std::cin, username);
 		InputParser::parseIsValidUsername(username);
 		addCredit(UserManager::getUser(username), amount);

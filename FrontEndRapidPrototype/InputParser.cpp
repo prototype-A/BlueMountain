@@ -70,8 +70,7 @@ void InputParser::parseTransaction(std::string input) {
  * @return The string of the double amount, padded to len characters
  */
 void InputParser::parseIsValidUsername(std::string name) {
-	trim(name);
-	if (name.compare("") == 0) {
+	if (trim(name).compare("") == 0) {
 		// Blank username entered
 		throw new TransactionException("Username cannot be blank");
 	} else if (!UserManager::exists(name)) {
@@ -87,15 +86,13 @@ void InputParser::parseIsValidUsername(std::string name) {
  * @return The whitespace-trimmed string
  */
 std::string InputParser::trim(std::string stringToTrim) {
-	int charIndex = 0;
 	for (int i = stringToTrim.length() - 1; i >= 0; i--) {
 		if (stringToTrim.at(i) != ' ') {
-			charIndex = i + 1;
-			break;
+			return stringToTrim.substr(0, i + 1);
 		}
 	}
 
-	return stringToTrim.substr(0, charIndex);
+	return "";
 }
 
 /**

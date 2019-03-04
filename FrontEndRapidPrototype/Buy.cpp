@@ -6,6 +6,7 @@
 
 
 void Buy::buyTickets() {
+
 	// Check if a user is logged in
 	if (!isLoggedIn()) {
 		throw new TransactionException("Please log in first");
@@ -18,9 +19,7 @@ void Buy::buyTickets() {
 
 	// Get user input for event name
 	std::cout << "Enter the event name: ";
-	std::string eventName = "";
-	// Ignore the newline from initiating transaction
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+	std::string eventName;
 	std::getline(std::cin, eventName);
 	if (eventName.compare("") == 0) {
 		// Event name is empty
@@ -32,8 +31,14 @@ void Buy::buyTickets() {
 
 	// Get user input for number of tickets to purchase
 	std::cout << "Enter number of tickets to purchase: ";
-	int numTickets = 0;
-	std::cin >> numTickets;
+	std::string strNumTickets;
+	std::getline(std::cin, strNumTickets);
+
+	// Convert user input to integer
+	int numTickets = -1;
+	try {
+		numTickets = stoi(strNumTickets);
+	} catch (...) {}
 	if (numTickets > 4 && !isType("AA")) {
 		// Standard users may only purchase up to 4 tickets
 		throw new TransactionException("Standard users may only purchase a maximum of 4 tickets per session");
@@ -45,8 +50,6 @@ void Buy::buyTickets() {
 	// Get user input for seller username
 	std::cout << "Enter seller's username: ";
 	std::string sellerName;
-	// Ignore tprevious newline
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 	std::getline(std::cin, sellerName);
 	InputParser::parseIsValidUsername(sellerName);
 
