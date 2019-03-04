@@ -1,6 +1,4 @@
-Enter your username: FS Test Account
-Logged in
-Enter the event name: Test Event 1
-Enter amount to purchase: asdf
-Amount to purchase must be a positive number (max. 4 for standard users)
+Please Enter a Username:
+Login sucessful!
+Enter the event name: Enter number of tickets to purchase: Number of tickets to purchase must be a positive number (maximum 4 for standard users)
 Logged out
