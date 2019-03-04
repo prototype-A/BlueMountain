@@ -9,6 +9,9 @@ all: $(OBJ) $(EXE)
 $(EXE): $(OBJ)
 	$(CC) -o $@ $^
 
+$(EXE).o: $(EXE).cpp
+	$(CC) -c $(CFLAGS) -o $@ $<
+
 %.o: %.cpp %.h
 	$(CC) -c $(CFLAGS) -o $@ $<
 

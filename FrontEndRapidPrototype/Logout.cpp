@@ -36,3 +36,18 @@ void Logout::writeToDailyFile() {
 	//Exits the program (for testing purposes)
 	exit(0);
 }
+
+/**
+ * Called by the program's main() to set the daily transaction
+ * file name. Will default to "transout.atf" if an empty string
+ * is passed
+ *
+ * @param filename The name of the daily transaction file
+ */
+void Logout::setDailyTransactionFileName(std::string filename) {
+	if (filename.compare("") == 0) {
+		dailyTransactionFileName = "transout.atf";
+	} else {
+		dailyTransactionFileName = filename;
+	}
+}

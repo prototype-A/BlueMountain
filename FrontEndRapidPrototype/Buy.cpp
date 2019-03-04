@@ -80,3 +80,18 @@ void Buy::addTransaction(std::string eventName,
 		InputParser::parseTransacTickets(numTickets) + " " + 
 		InputParser::parseTransacTicketPrice(ticketPrice));
 }
+
+/**
+ * Called by the program's main() to set the available tickets
+ * file name. Will default to "AvailableTickets.txt" if an
+ * empty string is passed
+ *
+ * @param filename The name of the daily transaction file
+ */
+void Buy::setTicketsFileName(std::string filename) {
+	if (filename.compare("") == 0) {
+		availableTicketsFileName = "AvailableTickets.txt";
+	} else {
+		availableTicketsFileName = filename;
+	}
+}

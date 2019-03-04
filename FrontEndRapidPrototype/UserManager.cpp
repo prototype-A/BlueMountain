@@ -58,3 +58,18 @@ bool UserManager::exists(std::string name) {
 
     return false;
 }
+
+/**
+ * Called by the program's main() to set the current users
+ * file name. Will default to "CurrentUsers.txt" if an
+ * empty string is passed
+ *
+ * @param filename The name of the daily transaction file
+ */
+void UserManager::setAccountsFileName(std::string filename) {
+	if (filename.compare("") == 0) {
+		accountsFileName = "CurrentUsers.txt";
+	} else {
+		accountsFileName = filename;
+	}
+}
