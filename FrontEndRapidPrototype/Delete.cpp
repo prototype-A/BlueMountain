@@ -36,7 +36,7 @@ void Delete::deleteUser() {
  */
 void Delete::addTransaction(User user) {
 	Transaction::addTransaction("02 " + 
-		InputParser::parseTransacName(username) + " " + 
+		InputParser::parseTransacName(user.getName()) + " " + 
 		user.getType() + " " + 
 		InputParser::parseTransacAmount(user.getBalance()));
 };

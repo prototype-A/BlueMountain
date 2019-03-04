@@ -50,7 +50,7 @@ void Create::create() {
  */
 void Create::addTransaction(User user) {
 	Transaction::addTransaction("01 " + 
-		InputParser::parseTransacName(username) + " " + 
+		InputParser::parseTransacName(user.getName()) + " " + 
 		user.getType() + " " + 
 		InputParser::parseTransacAmount(user.getBalance()));
 };

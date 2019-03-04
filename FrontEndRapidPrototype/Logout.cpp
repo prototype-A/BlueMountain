@@ -1,7 +1,9 @@
-#include "AddCredit.h"
-#include "Logout.h"
-#include <iostream>
 #include <fstream>
+#include <iostream>
+
+#include "AddCredit.h"
+#include "InputParser.h"
+#include "Logout.h"
 #include "User.h"
 
 /*
