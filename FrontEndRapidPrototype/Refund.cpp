@@ -24,15 +24,19 @@ void Refund::refund() {
 
 	// Get user input for account to add credit to
 	std::cout << "Enter the username of buyer account: ";
-	std::string buyerName = "";
-	std::cin >> buyerName;
+	std::string buyerName;
+	// Ignore the newline from initiating transaction
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+	std::getline(std::cin, buyerName);
 	InputParser::parseIsValidUsername(buyerName);
 	User buyer = UserManager::getUser(buyerName);
 
 	// Get user input for account to remove credit from
 	std::cout << "Enter the username of seller account: ";
-	std::string sellerName = "";
-	std::cin >> sellerName;
+	std::string sellerName;
+	// Ignore previous newline
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+	std::getline(std::cin, sellerName);
 	InputParser::parseIsValidUsername(buyerName);
 	User seller = UserManager::getUser(sellerName);
 
