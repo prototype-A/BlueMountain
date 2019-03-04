@@ -1,6 +1,10 @@
 #include <fstream>
-#include "UserManager.h"
 #include <iostream>
+
+#include "InputParser.h"
+#include "UserManager.h"
+
+
 User UserManager::getUser(std::string name) {
 	std::string username;
     std::string userType;
@@ -13,7 +17,7 @@ User UserManager::getUser(std::string name) {
     if (usersFile.is_open()){
         while (std::getline(usersFile, line)) {
             //Splits the data from the line
-            username = line.substr(0, 15);
+            username = InputParser::trim(line.substr(0, 15));
             userType = line.substr(16, 2);
             userBalance = std::stod(line.substr(19, 9));
 
@@ -38,16 +42,7 @@ bool UserManager::exists(std::string name) {
     usersFile.open(accountsFileName);
     if (usersFile.is_open()) {
         while (std::getline(usersFile, line)) {
-            username = line.substr(0, 15);
-            //Removes all spaces on the end of the record
-            int length = 0;
-            for(int i=username.length()-1;i>1;i--){
-                if(username[i-1] != ' '){
-                    length = i;
-                    break;
-                }
-            }
-            username = username.substr(0, length);
+            username = InputParser::trim(line.substr(0, 15));
             //Checks if its the right record
             if (name.compare(username) == 0) {
                 return true;
