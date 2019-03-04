@@ -86,15 +86,13 @@ void InputParser::parseIsValidUsername(std::string name) {
  * @return The whitespace-trimmed string
  */
 std::string InputParser::trim(std::string stringToTrim) {
-	int charIndex = 0;
 	for (int i = stringToTrim.length() - 1; i >= 0; i--) {
 		if (stringToTrim.at(i) != ' ') {
-			charIndex = i + 1;
-			break;
+			return stringToTrim.substr(0, i + 1);
 		}
 	}
 
-	return stringToTrim.substr(0, charIndex);
+	return "";
 }
 
 /**
