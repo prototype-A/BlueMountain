@@ -9,5 +9,6 @@ public:
 private:
 	inline static std::string availableTicketsFileName;
 
+	double getTicketPrice(std::string eventName, std::string sellerName, int numTickets);
 	void addTransaction(std::string eventName, std::string sellerName, int numTickets, double ticketPrice);
 };

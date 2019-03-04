@@ -1,6 +1,8 @@
+#include <fstream>
+#include <iostream>
+
 #include "Buy.h"
 #include "InputParser.h"
-#include <iostream>
 
 
 void Buy::buyTickets() {
@@ -48,17 +50,59 @@ void Buy::buyTickets() {
 	std::getline(std::cin, sellerName);
 	InputParser::parseIsValidUsername(sellerName);
 
-
-	/*
-	 * TODO:- Get ticket price for event
-	 *		- Handle case for not enough credit on user account to buy tickets
-	 *		- Handle case for not enough tickets to fulfil order
-	 * 		- Handle actual purchase transaction
-	 */
-
+	// Find tickets
+	double ticketPrice = getTicketPrice(eventName, sellerName, numTickets);
+	if (ticketPrice < 0) {
+		throw new TransactionException("Event tickets not found");
+	}
 
 	// Transaction completed
-	//addTransaction(eventName, sellerName, numTickets, ticketPrice);
+	addTransaction(eventName, sellerName, numTickets, ticketPrice);
+}
+
+/*
+ * Read from the available tickets file and get the unit price of
+ * the ticket for the specified event name, sold by the specified
+ * seller. Returns -1 if ticket was not found
+ *
+ * @param eventName The name of the event
+ * @param sellerName The username of the ticket seller
+ */
+double Buy::getTicketPrice(std::string eventName, std::string sellerName,
+						   int numTickets) {
+	// Reads through available tickets file
+	std::string line;
+	std::ifstream ticketsFile;
+	ticketsFile.open(availableTicketsFileName);
+	if (ticketsFile.is_open()) {
+		while (std::getline(ticketsFile, line)) {
+			// Compare event name and seller name
+			bool eventFound = eventName.compare(line.substr(0, 25)) == 0;
+			bool sellerFound = sellerName.compare(line.substr(26, 15)) == 0;
+			// Checks if ticket exists
+			if (eventFound && sellerFound) {
+				// Check if there are enough tickets
+				int numTicketsForSale = std::stoi(line.substr(42, 3));
+				if (numTicketsForSale < numTickets) {
+					ticketsFile.close();
+					throw new TransactionException("Sorry, there are not enough tickets left to fulfill this order");
+				}
+				double ticketPrice = std::stod(line.substr(46, 6));
+				// Check if user has sufficient credit in their account
+				// to make the purchase
+				if (loggedInUser.getBalance() - (ticketPrice * numTickets) < 0) {
+					ticketsFile.close();
+					throw new TransactionException("You do not have sufficient credit on your account to complete this purchase");
+				}
+
+				ticketsFile.close();
+				return ticketPrice;
+			}
+		}
+		ticketsFile.close();
+	}
+
+	return -1;
 }
 
 /**

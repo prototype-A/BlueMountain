@@ -46,12 +46,6 @@ void Sell::sellTickets() {
 		throw new TransactionException("Number of tickets to sell must be a positive number between 1-100");
 	}
 
-
-	/*
-	 * TODO:- Handle actual sale transaction
-	 */
-
-
 	// Transaction completed
 	addTransaction(eventName, numTickets, ticketPrice);
 }
