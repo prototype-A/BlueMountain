@@ -12,6 +12,7 @@ for i in {0..7}; do
     test=${tests[$i]}
     for num in $(seq 1 ${numTests[$i]}); do
         echo Testing FrontEndRequirements/input/$test/$test$num.inp
+
         #Starts the program and passes in the output of shcat $test$num.in line by line
         cat FrontEndRequirements/input/$test/$test$num.inp | ./FrontEndRapidPrototype/main CurrentUsers.txt availabletickets.txt dailytransactionfile.txt > out.out
 
