@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "User.h"
+#include "UserManager.h"
 
 /*
 	* Displays prompts to the admin user
@@ -23,6 +24,9 @@ void Create::create() {
 		std::string balance;
 		std::cout << "Please enter a new username:" << std::endl;
 		std::getline(std::cin, username);
+		if(UserManager::exists(username)){
+			throw new TransactionException("Username already exists.");
+		}
 		//Checks if username is valid
 		if (username.size() > 15 || username.size() < 1) {
             throw new TransactionException("Username wrong size.");

@@ -1,7 +1,8 @@
 Please Enter a Username:
-Login successful
-Please Enter a new Username:
-Please Enter a TYPE:
-Please Enter the amount of credit:
-Error invalid credit
-Logout successful
+Login sucessful!
+Please enter a new username:
+Please enter the users type:
+Please enter the users balance:
+Balance too large.
+Invalid transaction
+Logged out

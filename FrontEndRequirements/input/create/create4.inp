@@ -1,7 +1,7 @@
 login
 RealUser
 create
-AdminUser
+NewAdminUser
 Admin
-500.00
+500
 logout
