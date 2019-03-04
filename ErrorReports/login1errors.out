@@ -1,6 +1,4 @@
-1c1,2
-< login
----
+0a1,2
 > Please Enter a Username:
 > Error invalid username
 \ No newline at end of file
