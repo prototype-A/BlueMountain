@@ -12,7 +12,6 @@
 #include "Sell.h"
 #include "UserManager.h"
 #include "Transaction.h"
-#include "TransactionException.h"
 
 
 /**
@@ -52,9 +51,9 @@ void InputParser::parseTransaction(std::string input) {
 		} else {
 			std::cout << "Invalid transaction" << std::endl;
 		}
-	} catch (TransactionException e) {
+	} catch (TransactionException* e) {
 		// Print error message
-		std::cout << e.what() << std::endl;
+		std::cout << e->what() << std::endl;
 	} catch (...) {
 		// An unexpected exception occurred during transaction
 		std::cout << "An error occurred. Please try again." << std::endl;
