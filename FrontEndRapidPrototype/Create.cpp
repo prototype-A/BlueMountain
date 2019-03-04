@@ -21,7 +21,7 @@ void Create::create() {
 		}
 		std::string username;
 		std::string type;
-		std::string balance;
+		std::string strBalance;
 		std::cout << "Please enter a new username:" << std::endl;
 		std::getline(std::cin, username);
 		if(UserManager::exists(username)){
@@ -32,21 +32,25 @@ void Create::create() {
             throw new TransactionException("Username wrong size.");
 		}
 		std::cout << "Please enter the users type:" << std::endl;
-		std::cin >> type;
+		std::getline(std::cin, type);
 		if(!User::isValidType(type)){
 			throw new TransactionException("Invalid type.");
 		}
 		std::cout << "Please enter the users balance:" << std::endl;
-		std::cin >> balance;
+		std::getline(std::cin, strBalance);
+		double balance = -1;
+		try {
+			balance = std::stod(strBalance);
+		} catch (...) {}
 		//Checks if balance is valid
-		if (std::stod(balance) > 999999.99) {
+		if (balance > 999999.99) {
 			throw new TransactionException("Balance too large.");
-		} else if (std::stod(balance) < 0) {
+		} else if (balance < 0) {
 			throw new TransactionException("Balance too small.");
 		}
 		std::cout << "Create successful!" << std::endl;
 		//Creates the user with the data
-		User user(username, type, std::stod(balance));
+		User user(username, type, balance);
 
 		//Adds successful transaction to list
 		addTransaction(user);
