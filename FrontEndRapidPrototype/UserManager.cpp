@@ -20,15 +20,6 @@ User UserManager::getUser(std::string name) {
             username = InputParser::trim(line.substr(0, 15));
             userType = line.substr(16, 2);
             userBalance = std::stod(line.substr(19, 9));
-
-            //Removes all spaces on the end of the record
-            int length = 0;
-            for(int i=username.length()-1;i>1;i--){
-                if(username[i-1] != ' '){
-                    length = i;
-                    break;
-                }
-            }
             username = username.substr(0, length);
             
             //Checks if its the right record
