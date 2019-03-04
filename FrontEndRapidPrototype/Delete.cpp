@@ -35,7 +35,8 @@ void Delete::deleteUser() {
  * to be later added to the dailytransaction file.
  */
 void Delete::addTransaction(User user) {
-	std::string username = InputParser::parseTransacName(user.getName());
-	std::string deleteTransaction = "02_" + username + "_" + std::to_string(user.getBalance());
-	Transaction::addTransaction(deleteTransaction);
+	Transaction::addTransaction("02 " + 
+		InputParser::parseTransacName(username) + " " + 
+		user.getType() + " " + 
+		InputParser::parseTransacAmount(user.getBalance()));
 };
