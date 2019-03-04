@@ -16,10 +16,16 @@ void Delete::deleteUser() {
         throw new TransactionException("Not Logged In");
     }
 	std::string username;
-	std::cout << "Please enter a username you wish to delete.";
+	std::cout << "Please enter a username you wish to delete." << std::endl;
 	std::getline(std::cin, username);
+	if(!isType("AA")){
+		throw new TransactionException("Not privilege user.");
+	}
+	if(loggedInUser.getName().compare(username)==0){
+		throw new TransactionException("User logged in already!");
+	}
 	if (UserManager::exists(username)) {
-		std::cout << "Delete successful!";
+		std::cout << "Delete successful!" <<std::endl;
 		User user = UserManager::getUser(username);
 		addTransaction(user);
 	}
