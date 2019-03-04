@@ -20,11 +20,11 @@ for i in {0..7}; do
         outputDiff=$(diff out.out FrontEndRequirements/output/$test/$test$num.out)
         diff out.out FrontEndRequirements/output/$test/$test$num.out > ErrorReports/$test${num}errors.out
         echo Comparing $test$num.tout
-        toutputDiff=$(diff dailytransactionfile.txt FrontEndRequirements/output/$test/$test$num.tout)
-        diff dailytransactionfile.txt FrontEndRequirements/output/$test/$test$num.tout > ErrorReports/$test${num}errors.tout
+        toutputDiff=$(diff FrontEndRapidPrototype/dailytransactionfile.txt FrontEndRequirements/output/$test/$test$num.tout)
+        diff FrontEndRapidPrototype/dailytransactionfile.txt FrontEndRequirements/output/$test/$test$num.tout > ErrorReports/$test${num}errors.tout
         
         #If it passes (diff empty) then records the test as a pass in file
-        if [ "$outputDiff" != "" ]
+        if [ "$outputDiff" == "" ]
         then
             echo $test$num PASSED >> resultsfile.txt
         #If it doesnt pass append a failure
