@@ -1,7 +1,4 @@
-Enter your username: Administrator
-Logged in
-Enter the username of buyer account: SS Test Seller
-Enter the username of seller account: BS Test Buyer
-Enter the amount to refund: asdf
-Amount to refund must be a valid number
+Please Enter a Username:
+Login sucessful!
+Enter the username of buyer account: Enter the username of seller account: Enter the amount to refund: $Amount to refund must be a valid number between $0-$999999.99
 Logged out
