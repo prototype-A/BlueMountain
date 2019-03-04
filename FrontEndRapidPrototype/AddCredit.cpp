@@ -28,7 +28,9 @@ void AddCredit::addCredit() {
 		// Admin: Get user input on username of account to add credit to
 		std::cout << "Enter username of account to add credit to: ";
 		std::string username;
-		std::cin >> username;
+		// Ignore previous newline
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+		std::getline(std::cin, username);
 		InputParser::parseIsValidUsername(username);
 		addCredit(UserManager::getUser(username), amount);
 	} else {

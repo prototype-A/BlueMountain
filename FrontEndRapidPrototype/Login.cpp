@@ -12,17 +12,18 @@ void Login::login() {
 		throw new TransactionException("Logged In");
 	}
 	else {
-		std::cout << "Please Enter a Username:	";
+		std::cout << "Please Enter a Username: ";
 		std::string username;
-		std::cin >> username;
-        if(!UserManager::exists(username)){
-            throw new TransactionException("User does not exist!");
-        }
-		if (username.length() > 15 | username.length() < 1) {
+		// Ignore the newline from initiating transaction
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+		std::getline(std::cin, username);
+		if (username.length() > 15 || username.length() < 1) {
 			//TODO add other catches
 			throw new TransactionException("Username wrong length.");
 		}
-		else {
+        if(!UserManager::exists(username)){
+            throw new TransactionException("User does not exist!");
+        } else {
 			loggedInUser = UserManager::getUser(username);
 			std::cout<<"Login sucessful!";
 		}

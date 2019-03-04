@@ -1,6 +1,8 @@
+#include "AddCredit.h"
 #include "Logout.h"
 #include <iostream>
 #include <fstream>
+#include "User.h"
 
 /*
 * Checks to make sure a logout can take
@@ -12,10 +14,9 @@ void Logout::logout() {
     if(!Transaction::isLoggedIn()){
         throw new TransactionException("Not logged in.");
     }else{
-		//Used to set the loggedInUser to NULL
-		User *temp = &loggedInUser;
-		temp = NULL;
-		writeToDailyFile();
+		loggedInUser = User();
+		transactions = "";
+		AddCredit::sessionCreditLimit = 1000.00;
 	}
 };
 

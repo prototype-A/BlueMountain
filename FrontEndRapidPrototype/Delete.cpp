@@ -17,7 +17,9 @@ void Delete::deleteUser() {
     }
 	std::string username;
 	std::cout << "Please enter a username you wish to delete.";
-	std::cin >> username;
+	// Ignore the newline from initiating transaction
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+	std::getline(std::cin, username);
 	if (UserManager::exists(username)) {
 		std::cout << "Delete successful!";
 		User user = UserManager::getUser(username);

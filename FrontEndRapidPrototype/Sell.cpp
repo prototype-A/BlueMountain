@@ -16,8 +16,10 @@ void Sell::sellTickets() {
 
 	// Get user input for event name
 	std::cout << "Enter the event name: ";
-	std::string eventName = "";
-	std::cin >> eventName;
+	std::string eventName;
+	// Ignore the newline from initiating transaction
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+	std::getline(std::cin, eventName);
 	if (eventName.compare("") == 0) {
 		// Event name is empty
 		throw new TransactionException("Event name cannot be blank");
