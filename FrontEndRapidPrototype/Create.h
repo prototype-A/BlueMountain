@@ -4,5 +4,5 @@ class Create : public Transaction {
 public:
 	void create();
 private:
-	void addTransaction(User user, double balance);
+	void addTransaction(User user);
 };

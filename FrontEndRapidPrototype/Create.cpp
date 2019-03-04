@@ -41,14 +41,14 @@ void Create::create() {
 		User user(username, type, balance);
 
 		//Adds successful transaction to list
-		addTransaction(user, balance);
+		addTransaction(user);
 };
 
 /*
  * Creates a new transaction string formatted correctly
  * to be later added to the dailytransaction file.
  */
-void Create::addTransaction(User user, double balance) {
+void Create::addTransaction(User user) {
 	std::string username = InputParser::parseTransacName(user.getName());
 	std::string createTransaction = "01_" + username + "_" + user.getType() + "_" + std::to_string(user.getBalance());
 	Transaction::addTransaction(createTransaction);
