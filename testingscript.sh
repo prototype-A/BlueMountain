@@ -1,7 +1,6 @@
 # This is a basic shell script that loops through
 # the different test names
 rm resultsfile.txt
-rm out.out
 touch resultsfile.txt
 mkdir -p ErrorReports
 mkdir -p OutFiles
@@ -15,12 +14,12 @@ for i in {0..7}; do
         echo Testing FrontEndRequirements/input/$test/$test$num.inp
 
         #Starts the program and passes in the output of shcat $test$num.in line by line
-        cat FrontEndRequirements/input/$test/$test$num.inp | less "./FrontEndRapidPrototype/main ./CurrentUsers.txt ./AvailableTickets.txt ./dailytransactionfile.txt" > OutFiles/$test$num.out
-
+        cat FrontEndRequirements/input/$test/$test$num.inp | ./FrontEndRapidPrototype/main > OutFiles/$test$num.out
+        
         #Saves the differences between the files and recrods info
         echo Comparing $test$num.out
-        outputDiff=$(diff out.out FrontEndRequirements/output/$test/$test$num.out)
-        diff out.out FrontEndRequirements/output/$test/$test$num.out > ErrorReports/$test${num}errors.out
+        outputDiff=$(diff OutFiles/$test$num.out FrontEndRequirements/output/$test/$test$num.out)
+        diff OutFiles/$test$num.out FrontEndRequirements/output/$test/$test$num.out > ErrorReports/$test${num}errors.out
         echo Comparing $test$num.tout
         toutputDiff=$(diff FrontEndRapidPrototype/dailytransactionfile.txt FrontEndRequirements/output/$test/$test$num.tout)
         diff FrontEndRapidPrototype/dailytransactionfile.txt FrontEndRequirements/output/$test/$test$num.tout > ErrorReports/$test${num}errors.tout
