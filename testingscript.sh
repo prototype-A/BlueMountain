@@ -7,7 +7,7 @@ mkdir -p OutFiles
 tests=(login logout create delete refund buy addcredit sell);
 #parent_path=$( cd "$dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 #cd "$parent_path"
-numTests=(4 8 13 4 9 10 5 13);
+numTests=(4 8 13 4 9 10 4 13);
 for i in {0..7}; do 
     test=${tests[$i]}
     for num in $(seq 1 ${numTests[$i]}); do
