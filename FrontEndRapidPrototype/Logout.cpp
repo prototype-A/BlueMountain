@@ -1,3 +1,4 @@
+#include "AddCredit.h"
 #include "Logout.h"
 #include <iostream>
 #include <fstream>
@@ -15,6 +16,7 @@ void Logout::logout() {
     }else{
 		loggedInUser = User();
 		transactions = "";
+		AddCredit::sessionCreditLimit = 1000.00;
 	}
 };
 
