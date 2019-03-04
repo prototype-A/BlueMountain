@@ -12,7 +12,7 @@ void Login::login() {
 		throw new TransactionException("Logged In");
 	}
 	else {
-		std::cout << "Please Enter a Username: " << std::endl;
+		std::cout << "Please Enter a Username:" << std::endl;
 		std::string username;
 		// Ignore the newline from initiating transaction
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 

@@ -93,6 +93,15 @@ std::string User::getType() {
 	}
 }
 
+bool User::isValidType(std::string type) {
+	if(type.compare("Admin")==0 || 
+	type.compare("full-standard")==0 || 
+	type.compare("sell-standard")==0 || 
+	type.compare("buy-standard")==0) {
+		return true;
+	}
+	return false;
+}
 void User::setName(std::string n){
 	name = n;
 }

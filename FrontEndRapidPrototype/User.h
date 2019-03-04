@@ -21,6 +21,7 @@ public:
 	std::string getType();
 	void setName(std::string n);
 	void setType(Type t);
+	static bool isValidType(std::string type);
 private:
 	std::string name;
 	double credit;

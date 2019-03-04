@@ -70,6 +70,7 @@ void InputParser::parseTransaction(std::string input) {
  * @return The string of the double amount, padded to len characters
  */
 void InputParser::parseIsValidUsername(std::string name) {
+	trim(name);
 	if (name.compare("") == 0) {
 		// Blank username entered
 		throw new TransactionException("Username cannot be blank");

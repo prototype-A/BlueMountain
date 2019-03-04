@@ -15,30 +15,37 @@ void Create::create() {
         if (!Transaction::isLoggedIn()) {
             throw new TransactionException("Not Logged In");
         }
+		if (!isType("AA")){
+			throw new TransactionException("Not privileged user.");
+		}
 		std::string username;
 		std::string type;
-		double balance;
-		std::cout << "Please enter a new username: ";
+		std::string balance;
+		std::cout << "Please enter a new username:" << std::endl;
 		// Ignore the newline from initiating transaction
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 		std::getline(std::cin, username);
+
 		//Checks if username is valid
 		if (username.size() > 15 || username.size() < 1) {
             throw new TransactionException("Username wrong size.");
 		}
-		std::cout << "Please enter the users type: ";
+		std::cout << "Please enter the users type:" << std::endl;
 		std::cin >> type;
-		std::cout << "Please enter the users balance: ";
+		if(!User::isValidType(type)){
+			throw new TransactionException("Invalid type.");
+		}
+		std::cout << "Please enter the users balance:" << std::endl;
 		std::cin >> balance;
 		//Checks if balance is valid
-		if (balance > 999999.99) {
+		if (std::stod(balance) > 999999.99) {
 			throw new TransactionException("Balance too large.");
-		} else if (balance < 0) {
+		} else if (std::stod(balance) < 0) {
 			throw new TransactionException("Balance too small.");
 		}
 		std::cout << "Create successful!" << std::endl;
 		//Creates the user with the data
-		User user(username, type, balance);
+		User user(username, type, std::stod(balance));
 
 		//Adds successful transaction to list
 		addTransaction(user);
