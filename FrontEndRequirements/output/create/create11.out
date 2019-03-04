@@ -3,6 +3,5 @@ Login sucessful!
 Please enter a new username:
 Please enter the users type:
 Please enter the users balance:
-An error occurred. Please try again.
-Invalid transaction
+Balance too small.
 Logged out
