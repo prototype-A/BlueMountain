@@ -1,6 +1,6 @@
 #include <fstream>
 #include "UserManager.h"
-
+#include <iostream>
 User UserManager::getUser(std::string name) {
 	std::string username;
     std::string userType;
@@ -70,6 +70,7 @@ void UserManager::setAccountsFileName(std::string filename) {
 	if (filename.compare("") == 0) {
 		accountsFileName = "CurrentUsers.txt";
 	} else {
+        std::cout << filename;
 		accountsFileName = filename;
 	}
 }
