@@ -80,6 +80,24 @@ void InputParser::parseIsValidUsername(std::string name) {
 }
 
 /**
+ * Removes trailing chara from the specified string
+ *
+ * @param stringToTrim The string to remove trailing whitespace from
+ * @return The whitespace-trimmed string
+ */
+std::string InputParser::trim(std::string stringToTrim) {
+	int charIndex = 0;
+	for (int i = stringToTrim.length() - 1; i >= 0; i--) {
+		if (stringToTrim.at(i) != ' ') {
+			charIndex = i + 1;
+			break;
+		}
+	}
+
+	return stringToTrim.substr(0, charIndex);
+}
+
+/**
  * Returns the specified double amount as a string,
  * padded with 0's on the left (if needed) to fill
  * len characters
@@ -127,14 +145,10 @@ std::string InputParser::parseTransacTickets(int numTickets) {
  */
 std::string InputParser::padNumAmount(double amount, unsigned int len) {
 	std::string strAmount = std::to_string(amount);
+	strAmount = strAmount.substr(0, strAmount.length() - 4);
 
 	// Add ".00", if amount of cents is 0
 	if (ceil(amount) == floor(amount)) {
-		strAmount += ".00";
-	}
-
-	// Balance is already len characters
-	if (strAmount.length() == len) {
 		return strAmount;
 	}
 

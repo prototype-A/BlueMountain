@@ -13,24 +13,24 @@
 */
 void Logout::logout() {
     //Check if the user is logged
-    if(!Transaction::isLoggedIn()){
+    if (!Transaction::isLoggedIn()) {
         throw new TransactionException("Not logged in.");
-    }else{
+    } else {
 		// Add completed transaction to list for current session
-		addTransaction("00 " + 
+		Transaction::addTransaction("00 " + 
 			InputParser::parseTransacName(loggedInUser.getName()) + " " + 
 			loggedInUser.getType() + " " + 
 			InputParser::parseTransacAmount(loggedInUser.getBalance()));
+
+		// Write to the daily file
+		writeToDailyFile();
 
 		// Reset values
 		loggedInUser = User();
 		transactions = "";
 		AddCredit::sessionCreditLimit = 1000.00;
-
-		// Write to the daily file
-		writeToDailyFile();
 	}
-};
+}
 
 /*
 * Goes through every entry made in the temporary

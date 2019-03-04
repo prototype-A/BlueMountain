@@ -5,6 +5,7 @@ class InputParser {
 public:
 	static void parseTransaction(std::string input);
 	static void parseIsValidUsername(std::string name);
+	static std::string trim(std::string stringToTrim);
 	static std::string parseTransacTickets(int numTickets);
 	static std::string parseTransacTicketPrice(double price);
 	static std::string parseTransacAmount(double amount);
