@@ -1,6 +1,4 @@
-Enter your username: SS Test Seller
-Logged in
-Enter event title: Test Event 2
-Enter price per ticket: $25.05.46
-Price must be a number between $0.00-$999.99
-Logged Out
+Please Enter a Username:
+Login sucessful!
+Enter the event name: Enter price of each ticket: $Price of each ticket must be a number between $0.00-$999.99
+Logged out
