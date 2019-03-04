@@ -17,7 +17,8 @@ void Login::login() {
 		// Ignore the newline from initiating transaction
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 		std::getline(std::cin, username);
-		username = username.substr(0, username.size()-1);
+		//username = username.substr(0, username.size()-1);
+		std::cout<<username;
 		if (username.length() > 15 || username.length() < 1) {
 			//TODO add other catches
 			throw new TransactionException("Username wrong length.");

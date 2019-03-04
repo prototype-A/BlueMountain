@@ -22,6 +22,7 @@ void Logout::logout() {
 			loggedInUser.getType() + " " + 
 			InputParser::parseTransacAmount(loggedInUser.getBalance()));
 
+		std::cout << "Logged out";
 		// Write to the daily file
 		writeToDailyFile();
 
