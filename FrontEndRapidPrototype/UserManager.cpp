@@ -45,6 +45,7 @@ bool UserManager::exists(std::string name) {
             username = InputParser::trim(line.substr(0, 15));
             //Checks if its the right record
             if (name.compare(username) == 0) {
+				usersFile.close();
                 return true;
             }
         }
@@ -65,7 +66,6 @@ void UserManager::setAccountsFileName(std::string filename) {
 	if (filename.compare("") == 0) {
 		accountsFileName = "CurrentUsers.txt";
 	} else {
-        std::cout << filename;
 		accountsFileName = filename;
 	}
 }

@@ -43,6 +43,7 @@ void Logout::writeToDailyFile() {
 	std::ofstream dailyTransactionFile;
 	dailyTransactionFile.open(dailyTransactionFileName);
 	dailyTransactionFile << transactions;
+	dailyTransactionFile.flush();
 	dailyTransactionFile.close();
 	
 	//Exits the program (for testing purposes)

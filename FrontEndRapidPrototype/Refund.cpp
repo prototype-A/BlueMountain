@@ -33,7 +33,7 @@ void Refund::refund() {
 	std::cout << "Enter the username of seller account: ";
 	std::string sellerName;
 	std::getline(std::cin, sellerName);
-	InputParser::parseIsValidUsername(buyerName);
+	InputParser::parseIsValidUsername(sellerName);
 	User seller = UserManager::getUser(sellerName);
 
 	// Get user input on 

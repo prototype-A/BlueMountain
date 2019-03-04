@@ -31,6 +31,11 @@ void Sell::sellTickets() {
 	std::string strTicketPrice;
 	std::getline(std::cin, strTicketPrice);
 
+	// More than two digits of cents precision
+	if (strTicketPrice.find(".") < strTicketPrice.length() - 2) {
+		throw new TransactionException("Price must be a number between $0.00-$999.99");
+	}
+
 	// Convert user input to double
 	double ticketPrice = -1;
 	try {
