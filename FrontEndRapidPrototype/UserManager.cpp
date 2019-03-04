@@ -20,7 +20,6 @@ User UserManager::getUser(std::string name) {
             username = InputParser::trim(line.substr(0, 15));
             userType = line.substr(16, 2);
             userBalance = std::stod(line.substr(19, 9));
-            username = username.substr(0, length);
             
             //Checks if its the right record
             if (name.compare(username) == 0) {
