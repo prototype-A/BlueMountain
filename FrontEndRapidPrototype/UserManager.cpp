@@ -1,7 +1,6 @@
 #include <fstream>
 #include "UserManager.h"
 
-
 User UserManager::getUser(std::string name) {
 	std::string username;
     std::string userType;
@@ -40,6 +39,15 @@ bool UserManager::exists(std::string name) {
     if (usersFile.is_open()) {
         while (std::getline(usersFile, line)) {
             username = line.substr(0, 15);
+            //Removes all spaces on the end of the record
+            int length = 0;
+            for(int i=username.length()-1;i>1;i--){
+                if(username[i-1] != ' '){
+                    length = i;
+                    break;
+                }
+            }
+            username = username.substr(0, length);
             //Checks if its the right record
             if (name.compare(username) == 0) {
                 return true;

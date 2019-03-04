@@ -12,7 +12,7 @@ void Login::login() {
 		throw new TransactionException("Logged In");
 	}
 	else {
-		std::cout << "Please Enter a Username: ";
+		std::cout << "Please Enter a Username: " << std::endl;
 		std::string username;
 		// Ignore the newline from initiating transaction
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
@@ -25,7 +25,7 @@ void Login::login() {
             throw new TransactionException("User does not exist!");
         } else {
 			loggedInUser = UserManager::getUser(username);
-			std::cout<<"Login sucessful!";
+			std::cout<<"Login sucessful!"<< std::endl;
 		}
 	}
 };
