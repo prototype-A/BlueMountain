@@ -22,7 +22,6 @@ void Logout::logout() {
 			loggedInUser.getType() + " " + 
 			InputParser::parseTransacAmount(loggedInUser.getBalance()));
 
-		std::cout << "Logged out";
 		// Write to the daily file
 		writeToDailyFile();
 
@@ -30,6 +29,8 @@ void Logout::logout() {
 		loggedInUser = User();
 		transactions = "";
 		AddCredit::sessionCreditLimit = 1000.00;
+
+		std::cout << "Logged out" << std::endl;
 	}
 }
 

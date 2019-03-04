@@ -25,8 +25,6 @@ void Refund::refund() {
 	// Get user input for account to add credit to
 	std::cout << "Enter the username of buyer account: ";
 	std::string buyerName;
-	// Ignore the newline from initiating transaction
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 	std::getline(std::cin, buyerName);
 	InputParser::parseIsValidUsername(buyerName);
 	User buyer = UserManager::getUser(buyerName);
@@ -34,16 +32,20 @@ void Refund::refund() {
 	// Get user input for account to remove credit from
 	std::cout << "Enter the username of seller account: ";
 	std::string sellerName;
-	// Ignore previous newline
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 	std::getline(std::cin, sellerName);
 	InputParser::parseIsValidUsername(buyerName);
 	User seller = UserManager::getUser(sellerName);
 
 	// Get user input on 
 	std::cout << "Enter the amount to refund: $";
-	double refundAmount = 0;
-	std::cin >> refundAmount;
+	std::string strRefundAmount;
+	std::getline(std::cin, strRefundAmount);
+
+	// Convert user input to double
+	double refundAmount = -1;
+	try {
+		refundAmount = stod(strRefundAmount);
+	} catch (...) {}
 	if (refundAmount < 0 || refundAmount > 999999.99) {
 		// Cannot refund negative amount or more than account credit hard limit
 		throw new TransactionException("Amount to refund must be a valid number between 0-999999.99");

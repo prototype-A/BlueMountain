@@ -22,10 +22,7 @@ void Create::create() {
 		std::string type;
 		std::string balance;
 		std::cout << "Please enter a new username:" << std::endl;
-		// Ignore the newline from initiating transaction
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 		std::getline(std::cin, username);
-
 		//Checks if username is valid
 		if (username.size() > 15 || username.size() < 1) {
             throw new TransactionException("Username wrong size.");
