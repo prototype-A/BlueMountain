@@ -1,1 +1,2 @@
-Test Event 1              SS Test Seller 003 002000
+Test Event 1              SS Test Seller  003 999.99
+END                                       000 000.00
