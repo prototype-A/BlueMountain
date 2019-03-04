@@ -31,19 +31,21 @@ void Sell::sellTickets() {
 	std::string strTicketPrice;
 	std::getline(std::cin, strTicketPrice);
 
-	// More than two digits of cents precision
-	if (strTicketPrice.find(".") < strTicketPrice.length() - 2) {
-		throw new TransactionException("Price must be a number between $0.00-$999.99");
-	}
-
 	// Convert user input to double
 	double ticketPrice = -1;
 	try {
 		ticketPrice = stod(strTicketPrice);
 	} catch (...) {}
-	if (ticketPrice < 0 || ticketPrice > 999.99) {
+	unsigned int decimalIndex = strTicketPrice.find(".");
+	std::size_t secondDecimal = strTicketPrice.find(".", decimalIndex + 1, 1);
+	if (ticketPrice < 0 || ticketPrice > 999.99 || 
+		(decimalIndex < strTicketPrice.length() && 
+		strTicketPrice.length() - 1 - decimalIndex >= 3) || 
+		secondDecimal < strTicketPrice.length()) {
 		// Can only sell tickets for $0.00-999.99
-		throw new TransactionException("Price of each ticket must be a number between 0.00-999.99");
+		// and only with two digits of precision for cents value
+		// and can only contain one decimal
+		throw new TransactionException("Price of each ticket must be a number between $0.00-$999.99");
 	}
 
 	// Get user input for number of tickets to sell
@@ -54,11 +56,16 @@ void Sell::sellTickets() {
 	// Convert user input to int
 	int numTickets = -1;
 	try {
-		numTickets = stod(strNumTickets);
+		numTickets = stoi(strNumTickets);
 	} catch (...) {}
-	if (numTickets <= 0 || numTickets > 100) {
+	decimalIndex = strNumTickets.find(".");
+	secondDecimal = strNumTickets.find(".", decimalIndex + 1, 1);
+	if (numTickets <= 0 || numTickets > 100 || 
+		(decimalIndex < strNumTickets.length() && 
+		strNumTickets.length() - 1 - decimalIndex >= 1) || 
+		secondDecimal < strNumTickets.length()) {
 		// Can only sell 1-100 tickets
-		throw new TransactionException("Number of tickets to sell must be a positive number between 1-100");
+		throw new TransactionException("Number of tickets to sell must be a positive integer between 1-100");
 	}
 
 	// Transaction completed
