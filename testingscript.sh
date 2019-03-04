@@ -4,6 +4,7 @@ rm resultsfile.txt
 rm out.out
 touch resultsfile.txt
 mkdir -p ErrorReports
+mkdir -p OutFiles
 tests=(login logout create delete refund buy addcredit sell);
 #parent_path=$( cd "$dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 #cd "$parent_path"
@@ -14,7 +15,7 @@ for i in {0..7}; do
         echo Testing FrontEndRequirements/input/$test/$test$num.inp
 
         #Starts the program and passes in the output of shcat $test$num.in line by line
-        cat FrontEndRequirements/input/$test/$test$num.inp | less "./FrontEndRapidPrototype/main ./CurrentUsers.txt ./AvailableTickets.txt ./dailytransactionfile.txt" > out.out
+        cat FrontEndRequirements/input/$test/$test$num.inp | less "./FrontEndRapidPrototype/main ./CurrentUsers.txt ./AvailableTickets.txt ./dailytransactionfile.txt" > OutFiles/$test$num.out
 
         #Saves the differences between the files and recrods info
         echo Comparing $test$num.out

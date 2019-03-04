@@ -15,6 +15,7 @@ FrontEndRapidPrototype/.vs/FrontEndRapidPrototype/v15/.suo
 *.pdb
 *.o
 ErrorReports
+OutFiles
 FrontEndRapidPrototype/main
 out.out
 resultsfile.txt
