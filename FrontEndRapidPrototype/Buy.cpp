@@ -38,7 +38,11 @@ void Buy::buyTickets() {
 	int numTickets = -1;
 	try {
 		numTickets = stoi(strNumTickets);
-	} catch (...) {}
+	} catch (...) {
+		if (InputParser::trim(strNumTickets).compare("") == 0) {
+			throw new TransactionException("Amount to purchase cannot be empty");
+		}
+	}
 	if (numTickets > 4 && !isType("AA")) {
 		// Standard users may only purchase up to 4 tickets
 		throw new TransactionException("Standard users may only purchase a maximum of 4 tickets per session");
@@ -80,8 +84,8 @@ double Buy::getTicketPrice(std::string eventName, std::string sellerName,
 	if (ticketsFile.is_open()) {
 		while (std::getline(ticketsFile, line)) {
 			// Compare event name and seller name
-			bool eventFound = eventName.compare(line.substr(0, 25)) == 0;
-			bool sellerFound = sellerName.compare(line.substr(26, 15)) == 0;
+			bool eventFound = eventName.compare(InputParser::trim(line.substr(0, 25))) == 0;
+			bool sellerFound = sellerName.compare(InputParser::trim(line.substr(26, 15))) == 0;
 			// Checks if ticket exists
 			if (eventFound && sellerFound) {
 				// Check if there are enough tickets
