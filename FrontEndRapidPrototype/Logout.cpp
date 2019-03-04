@@ -17,6 +17,7 @@ void Logout::logout() {
 		loggedInUser = User();
 		transactions = "";
 		AddCredit::sessionCreditLimit = 1000.00;
+		writeToDailyFile();
 	}
 };
 
