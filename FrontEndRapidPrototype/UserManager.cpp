@@ -9,7 +9,7 @@ User UserManager::getUser(std::string name) {
     //Gets the user data from the file
     std::string line;
     std::ifstream usersFile;
-    usersFile.open("CurrentUsers.txt");
+    usersFile.open(accountsFileName);
     if (usersFile.is_open()){
         while (std::getline(usersFile, line)) {
             //Splits the data from the line
@@ -35,7 +35,7 @@ bool UserManager::exists(std::string name) {
     std::string username;
     std::string line;
     std::ifstream usersFile;
-    usersFile.open("CurrentUsers.txt");
+    usersFile.open(accountsFileName);
     if (usersFile.is_open()) {
         while (std::getline(usersFile, line)) {
             username = line.substr(0, 15);

@@ -1,7 +1,9 @@
-#include "AddCredit.h"
-#include "Logout.h"
-#include <iostream>
 #include <fstream>
+#include <iostream>
+
+#include "AddCredit.h"
+#include "InputParser.h"
+#include "Logout.h"
 #include "User.h"
 
 /*
@@ -14,9 +16,18 @@ void Logout::logout() {
     if(!Transaction::isLoggedIn()){
         throw new TransactionException("Not logged in.");
     }else{
+		// Add completed transaction to list for current session
+		addTransaction("00 " + 
+			InputParser::parseTransacName(loggedInUser.getName()) + " " + 
+			loggedInUser.getType() + " " + 
+			InputParser::parseTransacAmount(loggedInUser.getBalance()));
+
+		// Reset values
 		loggedInUser = User();
 		transactions = "";
 		AddCredit::sessionCreditLimit = 1000.00;
+
+		// Write to the daily file
 		writeToDailyFile();
 	}
 };
@@ -29,7 +40,7 @@ void Logout::logout() {
 void Logout::writeToDailyFile() {
 	//Writes to file
 	std::ofstream dailyTransactionFile;
-	dailyTransactionFile.open("dailytransactionfile.txt");
+	dailyTransactionFile.open(dailyTransactionFileName);
 	dailyTransactionFile << transactions;
 	dailyTransactionFile.close();
 	

@@ -49,7 +49,8 @@ void Create::create() {
  * to be later added to the dailytransaction file.
  */
 void Create::addTransaction(User user) {
-	std::string username = InputParser::parseTransacName(user.getName());
-	std::string createTransaction = "01_" + username + "_" + user.getType() + "_" + std::to_string(user.getBalance());
-	Transaction::addTransaction(createTransaction);
+	Transaction::addTransaction("01 " + 
+		InputParser::parseTransacName(user.getName()) + " " + 
+		user.getType() + " " + 
+		InputParser::parseTransacAmount(user.getBalance()));
 };
