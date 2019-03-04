@@ -1,3 +1,4 @@
+#include "TransactionException.h"
 #include "User.h"
 
 
@@ -30,12 +31,12 @@ User::User(std::string name, std::string type, double balance) {
  * @throw A string exception if the addCredit() could not be completed
  */
 void User::addCredit(double amount) {
-	if (amount <= 0 || amount <= 1000) {
-		// Amount of credit is out of range (0.01-1000.00)
-		throw "Amount must be a number between 0.01-1000.00";
+	if (amount < 0 || amount > 1000) {
+		// Amount of credit is out of range (< 0.00 or > 1000.00)
+		throw new TransactionException("Amount must be a number between $0.00-$1000.00");
 	} else if ((credit + amount) > 999999.99) {
 		// User will have more than 999999.99 of credit
-		throw "Amount too high";
+		throw new TransactionException("Amount too high");
 	} else {
 		credit += amount;
 	}

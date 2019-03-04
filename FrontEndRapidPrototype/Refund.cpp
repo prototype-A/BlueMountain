@@ -45,10 +45,21 @@ void Refund::refund() {
 	double refundAmount = -1;
 	try {
 		refundAmount = stod(strRefundAmount);
-	} catch (...) {}
-	if (refundAmount < 0 || refundAmount > 999999.99) {
+	} catch (...) {
+		if (InputParser::trim(strRefundAmount).compare("") == 0) {
+			throw new TransactionException("Amount to refund cannot be blank");
+		}
+	}
+	unsigned int decimalIndex = strRefundAmount.find(".");
+	std::size_t secondDecimal = strRefundAmount.find(".", decimalIndex + 1, 1);
+	if (refundAmount < 0 || refundAmount > 999999.99 || 
+		(decimalIndex < strRefundAmount.length() && 
+		strRefundAmount.length() - 1 - decimalIndex >= 3) || 
+		secondDecimal < strRefundAmount.length()) {
 		// Cannot refund negative amount or more than account credit hard limit
-		throw new TransactionException("Amount to refund must be a valid number between 0-999999.99");
+		// and only with two digits of precision for cents value
+		// and can only contain one decimal
+		throw new TransactionException("Amount to refund must be a valid number between $0-$999999.99");
 	}
 
 	// Issue refund
